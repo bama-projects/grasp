@@ -1,7 +1,8 @@
 .links
   - if controller_name != 'sessions'
     .link
-      = link_to 'Log in', new_session_path(resource_name)
+      Already registered?
+      = link_to 'Login', new_session_path(resource_name)
 
   - if devise_mapping.registerable? && controller_name != 'registrations'
     .link

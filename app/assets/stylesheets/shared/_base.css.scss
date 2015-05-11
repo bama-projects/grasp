@@ -56,6 +56,14 @@ html {
         background-color: $blueDark;
         cursor: pointer;
       }
+
+      &.register {
+        background-color: $greenLight;
+
+        &:hover {
+          background-color: $green;
+        }
+      }
     }
   }
 
@@ -110,6 +118,13 @@ html {
 
     .field {
       margin: 5px 0 10px 0;
+
+      .error {
+        margin: 5px 0;
+
+        color: $red;
+        text-align: left;
+      }
     }
   }
 

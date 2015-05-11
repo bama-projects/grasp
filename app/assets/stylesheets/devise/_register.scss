@@ -1,26 +1,18 @@
 @import 'shared/variables';
 
-.login {
+.register {
   width: 330px;
   margin: 0 auto;
 
   .box {
     margin: 20px 0;
-    
-    .remember {
-      margin: 5px 5px 20px;
-      float: right;
 
+    .hint {
+      margin: 5px 5px 10px;
+
+      text-align: right;
       font-size: $fontSizeSmall;
       color: $grey;
-
-      input {
-        cursor: pointer;
-      }
-
-      label {
-        margin: 0 0 0 5px;
-      }
     }
   }
 
