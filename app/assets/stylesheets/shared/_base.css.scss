@@ -119,6 +119,8 @@ html {
     .field {
       margin: 5px 0 10px 0;
 
+      clear: both;
+
       .error {
         margin: 5px 0;
 
@@ -130,5 +132,9 @@ html {
 
   .fa {
     font-size: $fontSizeLarge;
+  }
+
+  .clear {
+    clear: both;
   }
 }
