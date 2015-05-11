@@ -3,9 +3,11 @@ Rails.application.routes.draw do
 
   # Sets additional urls for devise paths
   # Taken from http://stackoverflow.com/a/3827783 | shingara | 11th May 2015, 09:28 am
-  get 'login', to: 'devise/sessions#new'
-  get 'logout', to: 'devise/sessions#destroy'
-  get 'register', to: 'devise/registrations#new'
+  devise_scope :user do
+    get 'login', to: 'devise/sessions#new'
+    get 'logout', to: 'devise/sessions#destroy'
+    get 'register', to: 'devise/registrations#new'
+  end
 
   root 'dashboard#index'
 end
