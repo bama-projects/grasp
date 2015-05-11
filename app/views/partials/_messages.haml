@@ -1,7 +1,20 @@
 - if notice
-  %p.alert.alert-success
-    = notice
+  .message.success
+    .icon
+      %i.fa.fa-check-circle
+
+    .text
+      = notice
 
 - if alert
-  %p.alert.alert-danger
-    = alert
+  .message.error
+    .icon
+      %i.fa.fa-times-circle
+
+    .text
+      = alert
+
+:javascript
+  $(document).on('ready page:load', function() {
+    var message = new Message('.message');
+  });

@@ -1,0 +1,40 @@
+@import 'shared/variables';
+
+.message {
+  width: 500px;
+  margin: auto;
+  padding: 10px 20px;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  background-color: $white;
+  border-radius: 0 0 3px 3px;
+
+  .icon {
+    width: 25px;
+    float: left;
+  }
+
+  &.error {
+    .fa {
+      color: $redLight;
+    }
+
+    .text {
+      color: $red;
+    }
+  }
+
+  &.success {
+    .fa {
+      color: $greenLight;
+    }
+
+    .text {
+      color: $green;
+    }
+  }
+}
