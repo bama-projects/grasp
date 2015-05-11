@@ -76,4 +76,16 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Devise
+
+  # Configures ActionMailer
+  # Taken from http://stackoverflow.com/a/8189785 | clyfe | 11th May 2015, 7:49 pm
+  # config.action_mailer.default_url_options = { host: 'yourdomain.com' }
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   address: => '127.0.0.1',
+  #   port:    => 25,
+  #   domain:  => 'yourdomain.com'
+  # }
 end
