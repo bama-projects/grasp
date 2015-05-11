@@ -50,10 +50,10 @@ html {
       font-weight: $fontWeightBold;
 
       color: $white;
-      background-color: $blueLight;
+      background-color: $blue;
 
       &:hover {
-        background-color: $blue;
+        background-color: $blueDark;
         cursor: pointer;
       }
     }
@@ -109,7 +109,7 @@ html {
     box-shadow: 7px 7px 0 -2px rgba(0, 0, 0, 0.15);
 
     .field {
-      margin: 5px 0;
+      margin: 5px 0 10px 0;
     }
   }
 
