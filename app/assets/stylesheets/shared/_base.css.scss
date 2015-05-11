@@ -18,7 +18,102 @@ html {
     background-image: image-url('background-dot.png');
   }
 
+  a {
+    color: $yellowLight;
+
+    font-weight: $fontWeightBold;
+    text-decoration: none;
+
+    &:hover {
+      color: $yellow;
+    }
+  }
+
+  input {
+    padding: 10px;
+
+    color: $greyDark;
+    font-size: $fontSizeMedium;
+
+    &[type=text], &[type=email], &[type=password] {
+      border: 1px solid $greyLight;
+    }
+  }
+
+  button {
+    padding: 10px 20px;
+    border: 0;
+
+    font-size: $fontSizeMediumBigger;
+
+    &[type=submit] {
+      font-weight: $fontWeightBold;
+
+      color: $white;
+      background-color: $blueLight;
+
+      &:hover {
+        background-color: $blue;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .fa-input {
+    border: 1px solid $greyLight;
+
+    input {
+      margin: 0 auto;
+      border: 0;
+    }
+
+    .fa {
+      color: $greyLight;
+    }
+
+    &.submit {
+      border: 0;
+    }
+
+    &.small {
+      input {
+        width: 240px;
+      }
+
+      &.submit {
+        button {
+          width: 300px;
+
+          .fa {
+            margin: 0 5px 0 -5px;
+
+            color: $white;
+            opacity: 0.4;
+          }
+        }
+      }
+    }
+
+  }
+
   .box {
+    padding: 15px;
+
+    text-align: center;
+
     background-color: $white;
+    border-radius: 3px;
+
+    -webkit-box-shadow: 7px 7px 0 -2px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 7px 7px 0 -2px rgba(0, 0, 0, 0.15);
+    box-shadow: 7px 7px 0 -2px rgba(0, 0, 0, 0.15);
+
+    .field {
+      margin: 5px 0;
+    }
+  }
+
+  .fa {
+    font-size: $fontSizeLarge;
   }
 }
