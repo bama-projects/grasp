@@ -46,7 +46,7 @@ html {
     }
   }
 
-  button {
+  input, button {
     padding: 10px 20px;
     border: 0;
 
@@ -70,10 +70,19 @@ html {
           background-color: $green;
         }
       }
+
+      &.red {
+        background-color: $redLight;
+
+        &:hover {
+          background-color: $red;
+        }
+      }
     }
   }
 
   .fa-input {
+    padding: 0 15px;
     border: 1px solid $greyLight;
 
     input {
@@ -91,11 +100,11 @@ html {
 
     &.small {
       input {
-        width: 240px;
+        width: 210px;
       }
 
       &.submit {
-        button {
+        input, button {
           width: 300px;
 
           .fa {
@@ -146,10 +155,27 @@ html {
         text-align: left;
       }
     }
+
+    .actions {
+      .fa-input {
+        padding: 0;
+      }
+    }
+
+    .left-col {
+      width: 330px;
+      float: left;
+    }
   }
 
   .fa {
     font-size: $fontSizeLarge;
+  }
+
+  .divider {
+    width: 100%;
+    margin: 20px 0;
+    border-bottom: 1px dotted $greyLight;
   }
 
   .clear {

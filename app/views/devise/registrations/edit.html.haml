@@ -1,43 +1,76 @@
-= "Edit #{resource_name.to_s.humanize}"
+#edit-profile.edit-profile
+  .box
+    %h1
+      Edit profile
 
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = devise_error_messages!
+    .description
+      Make changes to your profile here.
 
-  .field
-    = f.label :email
-    %br
-    = f.email_field :email, autofocus: true
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+      .left-col
+        .field
+          .fa-input.small.email
+            %i.fa.fa-user
+            = f.email_field :email, autofocus: true, placeholder: 'E-Mail'
 
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    %div
-      Currently waiting confirmation for:
-      = resource.unconfirmed_email
+          = handle_form_error(:email, resource)
 
-  .field
-    = f.label :password
-    %i
-      (leave blank if you don't want to change it)
-    %br
-    = f.password_field :password, autocomplete: 'off'
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          %div
+            Currently waiting confirmation for:
+            = resource.unconfirmed_email
 
-  .field
-    = f.label :password_confirmation
-    %br
-    = f.password_field :password_confirmation, autocomplete: 'off'
+        .field
+          .fa-input.small.password
+            %i.fa.fa-lock
+            = f.password_field :password, autocomplete: 'off', placeholder: 'Password'
 
-  .field
-    = f.label :current_password
-    %i
-      (we need your current password to confirm your changes)
-    = f.password_field :current_password, autocomplete: 'off'
+          .hint
+            (leave blank if you don't want to change it)
 
-  .actions
-    = f.submit 'Update'
+          = handle_form_error(:password, resource)
 
-Cancel my account
+        .field
+          .fa-input.small.password
+            %i.fa.fa-lock
+            = f.password_field :password_confirmation, autocomplete: 'off', placeholder: 'Password confirmation'
 
-%p
-  Unhappy?
-  = button_to 'Cancel my account', registration_path(resource_name), data: { confirm: 'Are you sure?' }, method: :delete
+          = handle_form_error(:password_confirmation, resource)
 
-= link_to 'Back', :back
+        .field
+          .fa-input.small.password
+            %i.fa.fa-lock
+            = f.password_field :current_password, autocomplete: 'off', placeholder: 'Current password'
+
+          .hint
+            (we need your current password to confirm your changes)
+
+          = handle_form_error(:current_password, resource)
+
+      .clear
+
+      .field
+      .actions
+        .fa-input.small.submit
+          = f.button type: 'submit', class: 'green' do
+            %i.fa.fa-check-circle
+            Update profile
+
+    .clear
+    .divider
+
+    %h1
+      Delete account
+
+    .description
+      Click on this button to delete your account.
+
+    .actions
+      .fa-input.small.submit
+        = button_to registration_path(resource_name), data: { confirm: 'Are you sure?' }, method: :delete, class: 'red' do
+          %i.fa.fa-close
+          Delete account
+
+  .links
+    .link
+      = link_to 'Back', :back

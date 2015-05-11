@@ -1,0 +1,23 @@
+@import 'shared/variables';
+
+.edit-profile {
+  width: 700px;
+  margin: 0 auto;
+
+  .box {
+    margin: 20px 0;
+
+    .hint {
+      margin: 2px 5px 5px;
+      float: right;
+
+      text-align: right;
+      font-size: $fontSizeSmall;
+      color: $grey;
+    }
+  }
+
+  .links {
+    text-align: right;
+  }
+}
