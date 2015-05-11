@@ -1,0 +1,12 @@
+@import 'shared/variables';
+
+form {
+  .hint {
+    margin: 2px 5px 5px;
+    float: right;
+
+    text-align: right;
+    font-size: $fontSizeSmall;
+    color: $grey;
+  }
+}
