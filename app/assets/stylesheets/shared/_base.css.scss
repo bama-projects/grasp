@@ -37,15 +37,6 @@ html {
     }
   }
 
-  input {
-    padding: 10px;
-    font-size: $fontSizeMedium;
-
-    &[type=text], &[type=email], &[type=password] {
-      border: 1px solid $greyLight;
-    }
-  }
-
   input, button {
     padding: 10px 20px;
     border: 0;
@@ -85,16 +76,25 @@ html {
     padding: 0 15px;
     border: 1px solid $greyLight;
 
-    input {
+    input, button {
       margin: 0 auto;
       border: 0;
+
+      &[type=submit] {
+        .fa {
+          margin: 0 5px 0 -5px;
+
+          color: $white;
+          opacity: 0.4;
+        }
+      }
     }
 
     .fa {
       color: $greyLight;
     }
 
-    &.submit {
+    &.button {
       border: 0;
     }
 
@@ -103,20 +103,10 @@ html {
         width: 210px;
       }
 
-      &.submit {
-        input, button {
-          width: 300px;
-
-          .fa {
-            margin: 0 5px 0 -5px;
-
-            color: $white;
-            opacity: 0.4;
-          }
-        }
+      input[type=submit], button[type=submit] {
+        width: 300px;
       }
     }
-
   }
 
   .box {

@@ -51,7 +51,7 @@
 
       .field
       .actions
-        .fa-input.small.submit
+        .fa-input.button.small
           = f.button type: 'submit', class: 'green' do
             %i.fa.fa-check-circle
             Update profile
@@ -66,7 +66,7 @@
       Click on this button to delete your account.
 
     .actions
-      .fa-input.small.submit
+      .fa-input.button.small
         = button_to registration_path(resource_name), data: { confirm: 'Are you sure?' }, method: :delete, class: 'red' do
           %i.fa.fa-close
           Delete account
