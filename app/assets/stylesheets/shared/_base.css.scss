@@ -14,8 +14,13 @@ html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
+    color: $greyDark;
     background-color: $blue;
     background-image: image-url('background-dot.png');
+  }
+
+  h1 {
+    margin: 0 0 20px 0;
   }
 
   a {
@@ -31,8 +36,6 @@ html {
 
   input {
     padding: 10px;
-
-    color: $greyDark;
     font-size: $fontSizeMedium;
 
     &[type=text], &[type=email], &[type=password] {
