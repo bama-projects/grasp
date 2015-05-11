@@ -1,20 +1,34 @@
-Change your password
+= render 'partials/logo'
 
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
-  = devise_error_messages!
-  = f.hidden_field :reset_password_token
+#reset-password.reset-password
+  .box
+    %h1
+      Change your password
 
-  .field
-    = f.label :password, 'New password'
-    %br
-    = f.password_field :password, autofocus: true, autocomplete: 'off'
+    .description
+      Type in a new password and submit the form to change it.
 
-  .field
-    = f.label :password_confirmation, 'Confirm new password'
-    %br
-    = f.password_field :password_confirmation, autocomplete: 'off'
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+      = f.hidden_field :reset_password_token
 
-  .actions
-    = f.submit 'Change my password'
+      .field
+        .fa-input.small.email
+          %i.fa.fa-lock
+          = f.password_field :password, autofocus: true, autocomplete: 'off', placeholder: 'New password'
 
-= render 'devise/shared/links'
+        = handle_form_error(:password, resource)
+
+      .field
+        .fa-input.small.email
+          %i.fa.fa-lock
+          = f.password_field :password_confirmation, autofocus: true, autocomplete: 'off', placeholder: 'Password confirmation'
+
+        = handle_form_error(:password_confirmation, resource)
+
+      .actions
+        .fa-input.small.submit
+          = f.button type: 'submit', class: 'green' do
+            %i.fa.fa-check-circle
+            Change my password
+
+  = render 'devise/shared/links'

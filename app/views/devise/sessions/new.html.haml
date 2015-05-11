@@ -1,5 +1,5 @@
 = render 'partials/logo'
-  
+
 #login.login
   .box
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
@@ -20,7 +20,7 @@
 
       .actions
         .fa-input.small.submit
-          = f.button type: 'submit', class: 'login' do
+          = f.button type: 'submit' do
             %i.fa.fa-unlock-alt
             Login
 
