@@ -5,6 +5,9 @@
     %h1
       Forgot your password?
 
+    .description
+      Type in your e-mail address and submit the form to receive instructions how to reset your password.
+
     = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
       .field
         .fa-input.small.email
