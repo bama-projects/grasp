@@ -81,11 +81,15 @@ Rails.application.configure do
 
   # Configures ActionMailer
   # Taken from http://stackoverflow.com/a/8189785 | clyfe | 11th May 2015, 7:49 pm
-  # config.action_mailer.default_url_options = { host: 'yourdomain.com' }
-  # config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.smtp_settings = {
-  #   address: => '127.0.0.1',
-  #   port:    => 25,
-  #   domain:  => 'yourdomain.com'
-  # }
+  config.action_mailer.default_url_options = { host: 'grasp-ba.herokuapp.com' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    domain:               'grasp-ba.herokuapp.com',
+    address:              ENV['ACTION_MAILER_HOST'],
+    port:                 ENV['ACTION_MAILER_PORT'],
+    user_name:            ENV['ACTION_MAILER_USERNAME'],
+    password:             ENV['ACTION_MAILER_PASSWORD'],
+    authentication:       ENV['ACTION_MAILER_AUTHENTICATION'],
+    enable_starttls_auto: true
+  }
 end
