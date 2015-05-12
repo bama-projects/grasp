@@ -35,6 +35,6 @@ class User < ActiveRecord::Base
   end
 
   def avatar_image(style = :normal)
-    avatar.exists? ? avatar.url(style) : 'avatar.png'
+    avatar.exists? ? avatar.url(style) : "avatar-#{style.to_s}.png"
   end
 end

@@ -1,0 +1,51 @@
+@import 'shared/variables';
+
+.header {
+  height: 50px;
+  background-color: $white;
+
+  -webkit-box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.15);
+
+  .user {
+    width: 140px;
+    margin: 15px 0;
+    float: left;
+
+    .avatar {
+      height: 22px;
+      width: 22px;
+      margin: 0 10px 0 0;
+      float: left;
+    }
+
+    .username {
+      margin: 1px 0;
+
+      font-weight: $fontWeightSemibold;
+    }
+  }
+
+  .nav-bar {
+    margin: 13px 0;
+    float: right;
+
+    a {
+      color: $greyLight;
+
+      &:hover {
+        color: $greyDark;
+      }
+    }
+
+    .fa {
+      font-size: $fontSizeLargest;
+    }
+
+    .nav-item {
+      margin: 0 15px;
+      float: left;
+    }
+  }
+}

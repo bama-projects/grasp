@@ -13,6 +13,10 @@
   background-color: $white;
   border-radius: 0 0 3px 3px;
 
+  -webkit-box-shadow: 4px 4px 0 -2px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 4px 4px 0 -2px rgba(0, 0, 0, 0.15);
+  box-shadow: 4px 4px 0 -2px rgba(0, 0, 0, 0.15);
+
   .icon {
     width: 25px;
     float: left;

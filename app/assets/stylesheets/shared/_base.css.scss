@@ -109,6 +109,25 @@ html {
     }
   }
 
+  .content {
+    width: 1120px;
+    margin: 0 auto;
+
+    .left, .right {
+      margin: 0 5px;
+      width: 250px;
+
+      float: left;
+    }
+
+    .center {
+      margin: 0 5px;
+      width: 590px;
+
+      float: left;
+    }
+  }
+
   .box {
     padding: 15px;
 
@@ -156,6 +175,11 @@ html {
       width: 330px;
       float: left;
     }
+  }
+
+  .avatar {
+    border-radius: 3px;
+    overflow: hidden;
   }
 
   .fa {
