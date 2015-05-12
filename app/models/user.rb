@@ -17,8 +17,10 @@ class User < ActiveRecord::Base
                              path: "public/images/users/:id/:style/:basename.:extension",
                              url:  "users/:id/:style/:basename.:extension"
 
-  validates_attachment_size :avatar, less_than: 5.megabytes
-  validates_attachment_content_type :avatar, content_type: ['image/jpeg', 'image/jpg']
+  # Throws error messages for image properties
+  # Taken from http://stackoverflow.com/a/19806340 | mgtcampbell | 12th May 2015, 10:56 am
+  validates_attachment :avatar, size: { in: 0..5.megabytes, message: 'size must be less than 5 megabytes' },
+                                content_type: { content_type: ['image/jpeg', 'image/jpg'], message: 'must be in JPEG format' }
 
   attr_accessor :login
 

@@ -158,11 +158,13 @@ html {
       clear: both;
 
       .error {
-        margin: 5px 0;
-
-        color: $red;
         text-align: left;
       }
+    }
+
+    .error {
+      margin: 5px 0;
+      color: $red;
     }
 
     .actions {

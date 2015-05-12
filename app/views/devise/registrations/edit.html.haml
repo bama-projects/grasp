@@ -66,6 +66,7 @@
             Select an image and click on update profile to upload it.
 
           = f.file_field :avatar
+          = handle_form_error(:avatar, resource)
 
       .clear
 
