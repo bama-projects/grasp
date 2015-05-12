@@ -50,5 +50,5 @@ Rails.application.configure do
 
   # Paperclip configuration
   Paperclip.options[:image_magick_path] = '/opt'
-  config.serve_static_assets = true
+  config.serve_static_files = true
 end
