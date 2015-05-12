@@ -22,6 +22,8 @@ class User < ActiveRecord::Base
   validates_attachment :avatar, size: { in: 0..5.megabytes, message: 'size must be less than 5 megabytes' },
                                 content_type: { content_type: ['image/jpeg', 'image/jpg'], message: 'must be in JPEG format' }
 
+  has_many :boards, foreign_key: :owner_id
+
   attr_accessor :login
 
   # Enables to login with username or email in one field
