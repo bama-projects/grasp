@@ -18,11 +18,15 @@
 
         .nav-bar
           .nav-item
-            %a{ href: edit_user_registration_path }
+            %a{ href: new_board_path, title: 'Create a new board' }
+              %i.fa.fa-plus
+
+          .nav-item
+            %a{ href: edit_user_registration_path, title: 'Edit profile' }
               %i.fa.fa-gear
 
           .nav-item
-            %a{ href: destroy_user_session_path, data: { method: 'delete' } }
+            %a{ href: destroy_user_session_path, title: 'Logout', data: { method: 'delete' } }
               %i.fa.fa-sign-out
 
           .clear
