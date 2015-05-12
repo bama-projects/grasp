@@ -7,4 +7,12 @@ class Board < ActiveRecord::Base
   def formatted_id
     "##{id}"
   end
+
+  def has_owner?(user)
+    owner === user
+  end
+
+  def has_member?(user)
+    has_owner?(user) || members.include?(user)
+  end
 end

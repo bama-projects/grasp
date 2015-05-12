@@ -49,8 +49,8 @@
 
               %ul
                 - @assigned_boards.each do |board|
-                  %a{ href: board_path(board) }
-                    %li
+                  %li
+                    %a{ href: board_path(board) }
                       .id
                         = board.formatted_id
 
@@ -63,11 +63,16 @@
                           = board.description
 
                       .creator
-                        Created by
+                        .description
+                          Created by
+
+                        .clear
+
+                        .username
+                          = board.owner.username
+
                         .avatar
                           = image_tag(board.owner.avatar_image(:tiny))
-
-                        = board.owner.username
 
                       .clear
 

@@ -1,9 +1,14 @@
 class BoardsController < ApplicationController
-  before_action :check_user_permissions!, except: :index
+  before_action :check_user_ownership!, except: [:index, :show]
+  before_action :check_user_membership!, only: :show
 
   def index
     @owned_boards = current_user.owned_boards
     @assigned_boards = current_user.assigned_boards
+  end
+
+  def show
+    @board = board
   end
 
   def edit
@@ -24,7 +29,11 @@ class BoardsController < ApplicationController
     Board.find params[:id]
   end
 
-  def check_user_permissions!
-    forbidden if board.owner != current_user
+  def check_user_ownership!
+    forbidden unless board.has_owner? current_user
+  end
+
+  def check_user_membership!
+    forbidden unless board.has_member? current_user
   end
 end
