@@ -57,6 +57,16 @@
 
           = handle_form_error(:current_password, resource)
 
+      .right-col
+        .avatar
+          = image_tag(resource.avatar_image)
+
+        .avatar-upload
+          .description
+            Select an image and click on update profile to upload it.
+
+          = f.file_field :avatar
+
       .clear
 
       .field

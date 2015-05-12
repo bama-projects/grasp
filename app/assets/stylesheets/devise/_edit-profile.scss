@@ -6,5 +6,27 @@
 
   .box {
     margin: 20px 0;
+
+    .avatar {
+      margin: 5px;
+      float: right;
+    }
+
+    .avatar-upload {
+      width: 250px;
+      padding: 5px;
+
+      float: right;
+
+      input {
+        padding: 0;
+
+        font-size: $fontSizeSmall;
+      }
+
+      .description {
+        margin: 0 0 10px;
+      }
+    }
   }
 }

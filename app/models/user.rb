@@ -9,6 +9,17 @@ class User < ActiveRecord::Base
   validates :username, presence: true, uniqueness: true, format: { with: /[a-zA-Z][a-zA-Z0-9_]{2,}/,
                                                          message: 'only allows letters and numbers starting with a character' }
 
+  has_attached_file :avatar, styles: {
+                                       tiny:      ["22x22#",   :jpg],
+                                       thumbnail: ["40x40#",   :jpg],
+                                       normal:    ["250x250#", :jpg]
+                                     },
+                             path: "public/images/users/:id/:style/:basename.:extension",
+                             url:  "users/:id/:style/:basename.:extension"
+
+  validates_attachment_size :avatar, less_than: 5.megabytes
+  validates_attachment_content_type :avatar, content_type: ['image/jpeg', 'image/jpg']
+
   attr_accessor :login
 
   # Enables to login with username or email in one field
@@ -21,5 +32,9 @@ class User < ActiveRecord::Base
     else
       where(conditions.to_h).first
     end
+  end
+
+  def avatar_image(style = :normal)
+    avatar.exists? ? avatar.url(style) : 'avatar.png'
   end
 end
