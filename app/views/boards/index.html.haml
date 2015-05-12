@@ -1,80 +1,13 @@
 #boards.boards
   .content
     .left
+
     .center
       - if @owned_boards.present? || @assigned_boards.present?
-        %h1
-          Dashboard
+        = render 'partials/dashboard'
 
-        .box
-          - if @owned_boards.present?
-            %h2
-              Boards you own
-
-            .description
-              These boards have been created by you.
-
-            %ul
-              - @owned_boards.each do |board|
-                %li
-                  %a{ href: board_path(board) }
-                    .id
-                      = board.formatted_id
-
-                    .info
-                      .title
-                        = board.title
-
-                      .clear
-                      .description
-                        = board.description
-
-                    .actions
-                      %a{ href: edit_board_path(board) }
-                        %i.fa.fa-pencil
-
-                      %a{ href: board_path(board), class: 'red', data: { method: 'delete', confirm: 'Are you sure?' } }
-                        %i.fa.fa-trash
-
-                    .clear
-
-              .divider
-
-          - if @assigned_boards.present?
-            %h2
-              Boards you are assigned to
-
-            .description
-              You are contributing to these boards.
-
-            %ul
-              - @assigned_boards.each do |board|
-                %li
-                  %a{ href: board_path(board) }
-                    .id
-                      = board.formatted_id
-
-                    .info
-                      .title
-                        = board.title
-
-                      .clear
-                      .description
-                        = board.description
-
-                    .creator
-                      .description
-                        Created by
-
-                      .clear
-
-                      .username
-                        = board.owner.username
-
-                      .avatar
-                        = image_tag(board.owner.avatar_image(:tiny))
-
-                    .clear
+      - else
+        = render 'partials/welcome'
 
     .right
     .clear

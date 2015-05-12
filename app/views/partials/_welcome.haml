@@ -1,0 +1,11 @@
+#welcome.welcome
+  %h1
+    = "Welcome to grasp, #{current_user.username}!"
+
+  %p
+    You haven't created any boards yet.
+
+  .fa-input.button.small
+    = button_to new_board_path, class: 'green', method: :get do
+      %i.fa.fa-plus-circle
+      Create your first board

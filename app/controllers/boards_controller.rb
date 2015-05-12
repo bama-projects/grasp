@@ -1,10 +1,14 @@
 class BoardsController < ApplicationController
-  before_action :check_user_ownership!, except: [:index, :show]
+  before_action :check_user_ownership!, except: [:index, :new, :show]
   before_action :check_user_membership!, only: :show
 
   def index
     @owned_boards = current_user.owned_boards
     @assigned_boards = current_user.assigned_boards
+  end
+
+  def new
+    @board = Board.new owner: current_user
   end
 
   def show
