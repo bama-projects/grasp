@@ -26,14 +26,16 @@ class BoardsController < ApplicationController
   private
 
   def board
-    Board.find params[:id]
+    Board.find_by_uid params[:id]
   end
 
   def check_user_ownership!
+    raise_routing_error if board.nil?
     forbidden unless board.has_owner? current_user
   end
 
   def check_user_membership!
+    raise_routing_error if board.nil?
     forbidden unless board.has_member? current_user
   end
 end

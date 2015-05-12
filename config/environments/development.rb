@@ -43,7 +43,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
   # Configures ActionMailer
-  # Taken from http://stackoverflow.com/a/8189785 | clyfe | 11th May 2015, 7:49 pm
+  # Taken from http://stackoverflow.com/a/8189785 | clyfe | 11th May 2015, 07:49 pm
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = { address: 'localhost', port: 1025 }

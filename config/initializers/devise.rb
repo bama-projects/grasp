@@ -259,6 +259,6 @@ Devise.setup do |config|
 
   # Enables to login with username or email in one field
   # Taken from https://github.com/plataformatec/devise/wiki/How-To:-Allow-users-to-sign-in-using-their-username-or-email-address
-  # Damon Yuan | 12th May 2015, 8:26 am
+  # Damon Yuan | 12th May 2015, 08:26 am
   config.authentication_keys = [:login]
 end

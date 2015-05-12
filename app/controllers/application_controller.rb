@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   protected
 
   # Announces new field 'username' to Devise gem
-  # Taken from http://stackoverflow.com/a/21486039 | SNEH PANDYA | 11th May 2015, 8:17 am
+  # Taken from http://stackoverflow.com/a/21486039 | SNEH PANDYA | 11th May 2015, 08:17 am
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me) }
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :password, :remember_me) }

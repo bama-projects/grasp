@@ -24,7 +24,7 @@ module Grasp
     config.active_record.raise_in_transactional_callbacks = true
 
     # Overrides action view error markup
-    # Taken from http://stackoverflow.com/a/5268106 | Ryan Bigg | 11th May 2015, 5:00 pm
+    # Taken from http://stackoverflow.com/a/5268106 | Ryan Bigg | 11th May 2015, 05:00 pm
     config.action_view.field_error_proc = Proc.new { |html_tag, instance|
       html_tag
     }
