@@ -40,41 +40,41 @@
 
               .divider
 
-            - if @assigned_boards.present?
-              %h2
-                Boards you are assigned to
+          - if @assigned_boards.present?
+            %h2
+              Boards you are assigned to
 
-              .description
-                You are contributing to these boards.
+            .description
+              You are contributing to these boards.
 
-              %ul
-                - @assigned_boards.each do |board|
-                  %li
-                    %a{ href: board_path(board) }
-                      .id
-                        = board.formatted_id
+            %ul
+              - @assigned_boards.each do |board|
+                %li
+                  %a{ href: board_path(board) }
+                    .id
+                      = board.formatted_id
 
-                      .info
-                        .title
-                          = board.title
-
-                        .clear
-                        .description
-                          = board.description
-
-                      .creator
-                        .description
-                          Created by
-
-                        .clear
-
-                        .username
-                          = board.owner.username
-
-                        .avatar
-                          = image_tag(board.owner.avatar_image(:tiny))
+                    .info
+                      .title
+                        = board.title
 
                       .clear
+                      .description
+                        = board.description
+
+                    .creator
+                      .description
+                        Created by
+
+                      .clear
+
+                      .username
+                        = board.owner.username
+
+                      .avatar
+                        = image_tag(board.owner.avatar_image(:tiny))
+
+                    .clear
 
     .right
     .clear
