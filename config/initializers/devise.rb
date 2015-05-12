@@ -256,4 +256,9 @@ Devise.setup do |config|
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+
+  # Enables to login with username or email in one field
+  # Taken from https://github.com/plataformatec/devise/wiki/How-To:-Allow-users-to-sign-in-using-their-username-or-email-address
+  # Damon Yuan | 12th May 2015, 8:26 am
+  config.authentication_keys = [:login]
 end
