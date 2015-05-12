@@ -1,0 +1,48 @@
+@import 'shared/variables';
+
+.boards {
+  ul {
+    li {
+      padding: 10px 5px;
+      
+      .id {
+        width: 70px;
+        float: left;
+
+        color: $greyLight;
+        font-size: $fontSizeH1;
+        font-weight: $fontWeightBold;
+      }
+
+      .info {
+        margin: 0 20px;
+        float: left;
+
+        .title {
+          float: left;
+
+          font-size: $fontSizeH1;
+          font-weight: $fontWeightBold;
+        }
+
+        .description {
+          margin: 0;
+        }
+      }
+
+      .actions {
+        float: right;
+
+        a {
+          margin: 0 5px;
+        }
+      }
+
+      &:hover {
+        .title {
+          color: $blueDark;
+        }
+      }
+    }
+  }
+}

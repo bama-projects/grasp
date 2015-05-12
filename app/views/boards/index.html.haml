@@ -1,0 +1,37 @@
+#boards.boards
+  .content
+    .left
+    .center
+      .box
+        - if @owned_boards.present?
+          %h1
+            Boards you own
+
+          .description
+            These boards have been created by you.
+
+          %ul
+            - @owned_boards.each do |board|
+              %li
+                .id
+                  = board.formatted_id
+
+                .info
+                  .title
+                    = board.title
+
+                  .clear
+                  .description
+                    = board.description
+
+                .actions
+                  %a{ href: edit_board_path(board) }
+                    %i.fa.fa-pencil
+
+                  %a{ href: board_path(board), class: 'red', data: { method: 'delete', confirm: 'Are you sure?' } }
+                    %i.fa.fa-trash
+
+                .clear
+
+    .right
+    .clear

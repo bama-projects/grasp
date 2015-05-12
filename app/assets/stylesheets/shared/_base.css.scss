@@ -35,6 +35,29 @@ html {
     &:hover {
       color: $yellow;
     }
+
+    &.red {
+      color: $redLight;
+
+      &:hover {
+        color: $red;
+      }
+    }
+  }
+
+  ul {
+    padding: 0;
+
+    text-align: left;
+    list-style: none;
+
+    li {
+      padding: 5px;
+
+      &:nth-child(even) {
+        background-color: $greyLighter;
+      }
+    }
   }
 
   input, button {
