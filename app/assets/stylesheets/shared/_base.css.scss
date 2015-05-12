@@ -160,6 +160,10 @@ html {
 
   .fa {
     font-size: $fontSizeLarge;
+
+    &.fa-envelope {
+      font-size: $fontSizeMediumGreater;
+    }
   }
 
   .divider {
