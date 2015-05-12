@@ -2,36 +2,74 @@
   .content
     .left
     .center
-      .box
-        - if @owned_boards.present?
-          %h1
-            Boards you own
+      - if @owned_boards.present? || @assigned_boards.present?
+        %h1
+          Dashboard
 
-          .description
-            These boards have been created by you.
+        .box
+          - if @owned_boards.present?
+            %h2
+              Boards you own
 
-          %ul
-            - @owned_boards.each do |board|
-              %li
-                .id
-                  = board.formatted_id
+            .description
+              These boards have been created by you.
 
-                .info
-                  .title
-                    = board.title
+            %ul
+              - @owned_boards.each do |board|
+                %a{ href: board_path(board) }
+                  %li
+                    .id
+                      = board.formatted_id
 
-                  .clear
-                  .description
-                    = board.description
+                    .info
+                      .title
+                        = board.title
 
-                .actions
-                  %a{ href: edit_board_path(board) }
-                    %i.fa.fa-pencil
+                      .clear
+                      .description
+                        = board.description
 
-                  %a{ href: board_path(board), class: 'red', data: { method: 'delete', confirm: 'Are you sure?' } }
-                    %i.fa.fa-trash
+                    .actions
+                      %a{ href: edit_board_path(board) }
+                        %i.fa.fa-pencil
 
-                .clear
+                      %a{ href: board_path(board), class: 'red', data: { method: 'delete', confirm: 'Are you sure?' } }
+                        %i.fa.fa-trash
+
+                    .clear
+
+              .divider
+
+            - if @assigned_boards.present?
+              %h2
+                Boards you are assigned to
+
+              .description
+                You are contributing to these boards.
+
+              %ul
+                - @assigned_boards.each do |board|
+                  %a{ href: board_path(board) }
+                    %li
+                      .id
+                        = board.formatted_id
+
+                      .info
+                        .title
+                          = board.title
+
+                        .clear
+                        .description
+                          = board.description
+
+                      .creator
+                        Created by
+                        .avatar
+                          = image_tag(board.owner.avatar_image(:tiny))
+                        
+                        = board.owner.username
+
+                      .clear
 
     .right
     .clear

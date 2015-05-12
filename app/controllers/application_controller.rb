@@ -6,8 +6,8 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
-  rescue_from ActiveRecord::RecordNotFound,   with: :not_found
-  rescue_from ActionController::RoutingError, with: :not_found
+  rescue_from ActiveRecord::RecordNotFound,     with: :not_found
+  rescue_from ActionController::RoutingError,   with: :not_found
 
   def raise_routing_error
     raise ActionController::RoutingError.new params[:path]
@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
 
   def not_found
     render file: "#{Rails.root}/public/404", status: :not_found
+  end
+
+  def forbidden
+    render file: "#{Rails.root}/public/403", status: :forbidden
   end
 
   protected
