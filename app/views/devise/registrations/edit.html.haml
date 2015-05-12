@@ -10,8 +10,18 @@
       .left-col
         .field
           .fa-input.small.email
+            %i.fa.fa-user
+            = f.text_field :username, autofocus: true, placeholder: 'Username'
+
+          = handle_form_error(:username, resource)
+
+          .hint
+            = "(3 characters minimum)"
+
+        .field
+          .fa-input.small.email
             %i.fa.fa-envelope
-            = f.email_field :email, autofocus: true, placeholder: 'E-Mail'
+            = f.email_field :email, placeholder: 'E-Mail'
 
           = handle_form_error(:email, resource)
 
