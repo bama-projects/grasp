@@ -16,8 +16,8 @@
 
             %ul
               - @owned_boards.each do |board|
-                %a{ href: board_path(board) }
-                  %li
+                %li
+                  %a{ href: board_path(board) }
                     .id
                       = board.formatted_id
 
@@ -66,7 +66,7 @@
                         Created by
                         .avatar
                           = image_tag(board.owner.avatar_image(:tiny))
-                        
+
                         = board.owner.username
 
                       .clear
