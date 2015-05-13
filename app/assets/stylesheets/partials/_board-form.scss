@@ -11,11 +11,11 @@
 
       a {
         padding: 10px;
-        color: $blue;
+        color: $blueDark;
       }
 
       &:hover, &.active {
-        background-color: $blue;
+        background-color: $blueDark;
 
         a {
           color: $white;
@@ -35,6 +35,26 @@
     .board-title, .board-description {
       input {
         width: 440px;
+      }
+    }
+
+    .table {
+      font-size: $fontSizeMediumGreater;
+
+      .title {
+        color: $blueDark;
+        font-weight: $fontWeightBold;
+      }
+
+      .options {
+        color: $grey;
+        font-weight: $fontWeightSemibold;
+      }
+    }
+
+    .privacy {
+      input[type=radio] {
+        margin: 0 15px 0 40px;
       }
     }
   }

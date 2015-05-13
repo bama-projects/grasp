@@ -36,7 +36,23 @@
         = handle_form_error(:description, @board)
 
       .divider
-      
+
+      .field.privacy
+        .table
+          .title
+            Privacy
+
+          .options
+            = f.radio_button :public, true
+            = f.label :public, 'Public', value: 'true'
+
+            = f.radio_button :public, false, checked: true
+            = f.label :public, 'Private', value: 'false'
+
+          .clear
+
+      .divider
+
     #content.page
       content
 

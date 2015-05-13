@@ -64,6 +64,12 @@ html {
     }
   }
 
+  input {
+    &[type=radio] {
+      cursor: pointer;
+    }
+  }
+
   input, button {
     padding: 10px 20px;
     border: 0;
@@ -190,6 +196,18 @@ html {
       margin: 5px 0 10px 0;
 
       clear: both;
+
+      .table {
+        padding: 0 10px;
+
+        .title {
+          float: left;
+        }
+
+        .options {
+          float: right;
+        }
+      }
 
       .error {
         text-align: left;
