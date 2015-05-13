@@ -44,7 +44,7 @@ class BoardsController < ApplicationController
   end
 
   def board_params
-    params.require(:board).permit(:owner_id, :title, :description, :public)
+    params.require(:board).permit(:owner_id, :title, :description, :public, :submission_until)
   end
 
   def check_user_ownership!

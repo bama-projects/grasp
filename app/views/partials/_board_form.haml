@@ -23,7 +23,7 @@
     #information.page.active
       .field
         .fa-input.board-title
-          %i.fa.fa-calendar
+          %i.fa.fa-calendar-o
           = f.text_field :title, autofocus: true, placeholder: 'Title'
 
         = handle_form_error(:title, @board)
@@ -48,6 +48,22 @@
 
             = f.radio_button :public, false, checked: true
             = f.label :public, 'Private', value: 'false'
+
+          .clear
+
+      .divider
+
+      .field.submission
+        .table
+          .title
+            Submission until
+
+          .options
+            .fa-input.datetime
+              %i.fa.fa-calendar
+              = f.text_field :submission_until, placeholder: 'Select date'
+
+            = handle_form_error(:submission_until, @board)
 
           .clear
 
