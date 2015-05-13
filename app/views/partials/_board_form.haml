@@ -1,0 +1,60 @@
+#board-form.board-form
+  .menu
+    %ul
+      %li{ class: 'active' }
+        %a{ href: '#information' }
+          Information
+
+      %li
+        %a{ href: '#content' }
+          Content
+
+      %li
+        %a{ href: '#attachments' }
+          Attachments
+
+      %li
+        %a{ href: '#members' }
+          Members
+
+      .clear
+
+  = form_for @board do |f|
+    #information.page.active
+      .field
+        .fa-input.board-title
+          %i.fa.fa-calendar
+          = f.text_field :title, autofocus: true, placeholder: 'Title'
+
+        = handle_form_error(:title, @board)
+
+      .field
+        .fa-input.board-description
+          %i.fa.fa-pencil
+          = f.text_field :description, placeholder: 'Description'
+
+        = handle_form_error(:description, @board)
+
+      .divider
+      
+    #content.page
+      content
+
+    #attachments.page
+      attachments
+
+    #members.page
+      members
+
+    .actions
+      .fa-input.button.submit
+        = f.button type: 'submit', class: 'green' do
+          %i.fa.fa-check-circle
+          Create board
+
+      .clear
+
+:javascript
+  $(document).on('ready page:load', function() {
+    var boardForm = new BoardForm('.board-form');
+  });

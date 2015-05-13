@@ -1,0 +1,49 @@
+@import 'shared/variables';
+
+.board-form {
+  .menu {
+    li {
+      margin: 0 10px;
+      float: left;
+
+      background-color: $white;
+      border-radius: 3px;
+
+      a {
+        padding: 10px;
+        color: $blue;
+      }
+
+      &:hover, &.active {
+        background-color: $blue;
+
+        a {
+          color: $white;
+        }
+      }
+    }
+  }
+
+  .page {
+    margin: 20px 10px;
+    display: none;
+
+    &.active {
+      display: block;
+    }
+
+    .board-title, .board-description {
+      input {
+        width: 440px;
+      }
+    }
+  }
+
+  .actions {
+    margin: 10px;
+
+    .submit {
+      float: right;
+    }
+  }
+}

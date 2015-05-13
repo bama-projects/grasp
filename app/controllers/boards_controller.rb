@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-  before_action :check_user_ownership!, except: [:index, :new, :show]
+  before_action :check_user_ownership!, except: [:index, :new, :create, :show]
   before_action :check_user_membership!, only: :show
 
   def index
@@ -8,7 +8,17 @@ class BoardsController < ApplicationController
   end
 
   def new
-    @board = Board.new owner: current_user
+    @board = Board.new
+  end
+
+  def create
+    @board = current_user.owned_boards.new board_params
+
+    if @board.save
+      redirect_to @board, notice: 'Board successfully created.'
+    else
+      render :new
+    end
   end
 
   def show
@@ -31,6 +41,10 @@ class BoardsController < ApplicationController
 
   def board
     Board.find_by_uid params[:id]
+  end
+
+  def board_params
+    params.require(:board).permit(:owner_id, :title, :description)
   end
 
   def check_user_ownership!

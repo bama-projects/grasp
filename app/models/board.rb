@@ -3,6 +3,7 @@ class Board < ActiveRecord::Base
   has_and_belongs_to_many :members, class_name: 'User'
 
   validates :owner, presence: true
+  validates :title, presence: true
 
   before_create :generate_uid
 
