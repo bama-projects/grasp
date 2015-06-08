@@ -6,6 +6,14 @@
       %h1
         = "Course #{@course.title}"
 
+      %a{ href: new_question_path }
+        .add-question
+          %i.fa.fa-plus-square
+          .label
+            New question
+
+      .clear
+
       .box
         %h2
           Questions
