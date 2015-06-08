@@ -57,6 +57,15 @@
         margin: 0 15px 0 40px;
       }
     }
+
+    .user-selector {
+      .add {
+        textarea {
+          height: 100px;
+          width: 500px;
+        }
+      }
+    }
   }
 
   .actions {

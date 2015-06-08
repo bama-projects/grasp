@@ -53,7 +53,12 @@
       rewards
 
     #members.page
-      members
+      .field
+        .user-selector
+          .add
+            = f.text_area :user_emails, placeholder: 'Enter comma separated user e-mail addresses'
+
+      .divider
 
     .actions
       .fa-input.button.submit

@@ -70,13 +70,15 @@ html {
     }
   }
 
-  input, button {
+  input, button, textarea {
     padding: 10px 20px;
     border: 0;
 
     font-size: $fontSizeMediumBigger;
 
-    &[type=submit] {
+
+
+    &[type=submit], &[type=button] {
       font-weight: $fontWeightBold;
 
       color: $white;
@@ -105,6 +107,13 @@ html {
     }
   }
 
+  textarea {
+    font-family: $fontBasic;
+    border: 1px solid $greyLight;
+
+    resize: none;
+  }
+
   .fa-input {
     padding: 0 15px;
     border: 1px solid $greyLight;
@@ -115,7 +124,7 @@ html {
       margin: 0 auto;
       border: 0;
 
-      &[type=submit] {
+      &[type=submit], &[type=button] {
         .fa {
           margin: 0 5px 0 -5px;
 

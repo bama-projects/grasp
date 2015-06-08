@@ -13,6 +13,7 @@ class CoursesController < ApplicationController
 
   def create
     @course = current_user.owned_courses.new course_params
+    @course.add_members_by_email! course_params[:user_emails]
 
     if @course.save
       redirect_to @course, notice: 'course successfully created.'
@@ -40,11 +41,11 @@ class CoursesController < ApplicationController
   private
 
   def course
-    course.find_by_uid params[:id]
+    Course.find_by_uid params[:id]
   end
 
   def course_params
-    params.require(:course).permit(:owner_id, :title, :description, :public)
+    params.require(:course).permit(:owner_id, :title, :description, :public, :user_emails)
   end
 
   def check_user_ownership!
