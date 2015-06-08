@@ -1,10 +1,13 @@
 class Question < ActiveRecord::Base
+  CATEGORIES = %w(general technical language)
+
   belongs_to :author, class_name: 'User', foreign_key: :user_id
   belongs_to :course
 
-  validates :author,  presence: true
-  validates :course,  presence: true
-  validates :content, presence: true
+  validates :author,   presence: true
+  validates :course,   presence: true
+  validates :content,  presence: true
+  validates :category, inclusion: { in: CATEGORIES }
 
   before_create :generate_uid
 

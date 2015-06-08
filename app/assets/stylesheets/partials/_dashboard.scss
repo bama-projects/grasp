@@ -33,7 +33,7 @@
     }
 
     li {
-      padding: 10px 5px;
+      padding: 10px;
 
       .id {
         width: 40px;
@@ -49,6 +49,7 @@
         float: left;
 
         .title {
+          margin: 0 0 5px 0;
           float: left;
 
           font-size: $fontSizeH1;

@@ -30,6 +30,9 @@
 
                   .clear
 
+                  .category
+                    = question.category.to_s.humanize
+
                   .date
                     = "Asked on #{question.created_at.to_formatted_s(:long)}"
 
