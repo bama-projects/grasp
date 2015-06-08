@@ -27,7 +27,9 @@ class Course < ActiveRecord::Base
 
   def add_members_by_email!(email_addresses)
     email_addresses.delete(' ').split(',').each do |email_address|
-      members << @user if @user = User.find_by_email(email_address)
+      user = User.find_by_email(email_address)
+      next if user.blank? || has_owner?(user)
+      members << user
     end
   end
 
