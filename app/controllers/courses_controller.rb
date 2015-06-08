@@ -57,11 +57,11 @@ class CoursesController < ApplicationController
   private
 
   def course
-    Course.find_by_uid params[:id]
+    Course.find_by_uid(params[:id]) || raise_routing_error
   end
 
   def user
-    User.find params[:user_id]
+    User.find(params[:user_id]) || raise_routing_error
   end
 
   def course_params
@@ -69,13 +69,11 @@ class CoursesController < ApplicationController
   end
 
   def check_user_ownership!
-    raise_routing_error if     course.nil?
-    forbidden           unless course.has_owner? current_user
+    forbidden unless course.has_owner? current_user
   end
 
   def check_user_membership!
-    raise_routing_error if     course.nil?
-    return              if     course.is_public?
-    forbidden           unless course.has_member? current_user
+    return    if     course.is_public?
+    forbidden unless course.has_member? current_user
   end
 end

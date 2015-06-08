@@ -6,7 +6,7 @@
       %h1
         = "Course #{@course.title}"
 
-      %a{ href: new_question_path }
+      %a{ href: new_course_question_path(@course) }
         .add-question
           %i.fa.fa-plus-square
           .label
@@ -24,7 +24,7 @@
         %ul
           - @course.questions.each do |question|
             %li
-              %a{ href: question_path(question) }
+              %a{ href: course_question_path(@course, question) }
                 .status
                   - if question.solved
                     .fa.fa-check
@@ -58,10 +58,10 @@
 
                 - if question.author === current_user
                   .actions
-                    %a{ href: edit_question_path(question) }
+                    %a{ href: edit_course_question_path(@course, question) }
                       %i.fa.fa-pencil
 
-                    %a{ href: question_path(question), class: 'red', data: { method: 'delete', confirm: 'Are you sure?' } }
+                    %a{ href: course_question_path(@course, question), class: 'red', data: { method: 'delete', confirm: 'Are you sure?' } }
                       %i.fa.fa-trash
 
                 .clear
