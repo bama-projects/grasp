@@ -1,6 +1,11 @@
 #question-form.question-form
   = form_for [@question.course, @question] do |f|
     .page
+      .field
+        = render 'partials/code_field', form_content: { form: f, content: :content, object: @question }
+
+      .divider
+
       .field.privacy
         .table
           .title
@@ -14,11 +19,6 @@
             = f.label :anonymous, 'Public', value: 'false'
 
           .clear
-
-      .divider
-
-      .field
-        = render 'partials/code_field', form_content: { form: f, content: :content, object: @question }
 
       .divider
 
