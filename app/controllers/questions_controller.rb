@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
   before_action :check_user_course_membership!
 
   def new
-    @question = Question.new
+    @question = course.questions.new
   end
 
   def create

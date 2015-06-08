@@ -44,17 +44,18 @@
                   .date
                     = "Asked on #{question.created_at.to_formatted_s(:long)}"
 
-                .creator
-                  .description
-                    Created by
+                - if question.anonymous.blank?
+                  .creator
+                    .description
+                      Created by
 
-                  .clear
+                    .clear
 
-                  .username
-                    = question.author.username
+                    .username
+                      = question.author.username
 
-                  .avatar
-                    = image_tag(question.author.avatar_image(:tiny))
+                    .avatar
+                      = image_tag(question.author.avatar_image(:tiny))
 
                 - if question.author === current_user
                   .actions

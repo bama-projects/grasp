@@ -1,0 +1,36 @@
+#question-form.question-form
+  = form_for [@question.course, @question] do |f|
+    .page
+      .field.privacy
+        .table
+          .title
+            Username visibility
+
+          .options
+            = f.radio_button :anonymous, true
+            = f.label :anonymous, 'Anonymous', value: 'true'
+
+            = f.radio_button :anonymous, false
+            = f.label :anonymous, 'Public', value: 'false'
+
+          .clear
+
+      .divider
+
+      .field
+        = render 'partials/code_field', form_content: { form: f, content: :content, object: @question }
+
+      .divider
+
+    .actions
+      .fa-input.button.submit
+        = f.button type: 'submit', class: 'green' do
+          %i.fa.fa-check-circle
+          Finish
+
+      .clear
+
+:javascript
+  $(document).on('ready page:load', function() {
+    var courseForm = new CourseForm('.course-form');
+  });
