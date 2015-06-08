@@ -1,5 +1,5 @@
-class RenamecoursesUsersToCoursesUsers < ActiveRecord::Migration
+class RenameBoardsUsersToCoursesUsers < ActiveRecord::Migration
   def change
-    rename_table :courses_users, :courses_users
+    rename_table :boards_users, :courses_users
   end
 end
