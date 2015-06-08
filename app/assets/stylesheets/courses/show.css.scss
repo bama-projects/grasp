@@ -1,0 +1,30 @@
+@import 'shared/variables';
+
+.courses.show {
+  li {
+    a {
+      .status {
+        padding: 3px 10px;
+        float: left;
+
+        .fa {
+          font-size: $fontSizeLargest;
+        }
+
+        .fa-check {
+          color: $greenLight;
+        }
+
+        .fa-chevron-right {
+          padding: 0 3px;
+        }
+      }
+    }
+
+    &:hover a {
+      .fa-check {
+        color: $green;
+      }
+    }
+  }
+}

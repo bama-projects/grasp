@@ -2,8 +2,9 @@ class Question < ActiveRecord::Base
   belongs_to :author, class_name: 'User', foreign_key: :user_id
   belongs_to :course
 
-  validates :author, presence: true
-  validates :course, presence: true
+  validates :author,  presence: true
+  validates :course,  presence: true
+  validates :content, presence: true
 
   before_create :generate_uid
 

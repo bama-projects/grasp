@@ -1,0 +1,57 @@
+#dashboard.dashboard.courses.show
+  .content
+    .left
+
+    .center
+      %h1
+        = "Course #{@course.title}"
+
+      .box
+        %h2
+          Questions
+
+        .description
+          These questions have been created in this course.
+
+        %ul
+          - @course.questions.each do |question|
+            %li
+              %a{ href: question_path(question) }
+                .status
+                  - if question.solved
+                    .fa.fa-check
+
+                  - else
+                    .fa.fa-chevron-right
+
+                .info
+                  .title
+                    = question.content
+
+                  .clear
+
+                .creator
+                  .description
+                    Created by
+
+                  .clear
+
+                  .username
+                    = question.author.username
+
+                  .avatar
+                    = image_tag(question.author.avatar_image(:tiny))
+
+                - if question.author === current_user
+                  .actions
+                    %a{ href: edit_question_path(question) }
+                      %i.fa.fa-pencil
+
+                    %a{ href: question_path(question), class: 'red', data: { method: 'delete', confirm: 'Are you sure?' } }
+                      %i.fa.fa-trash
+
+                .clear
+
+
+    .right
+    .clear

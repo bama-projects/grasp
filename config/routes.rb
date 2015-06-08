@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     patch 'remove_member/:user_id' => 'courses#remove_member', as: :remove_member, on: :member
   end
 
+  resources :questions
+
   match '*path', to: 'application#raise_routing_error', via: :all
 
   root 'courses#index'
