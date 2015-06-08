@@ -1,0 +1,19 @@
+#edit-course.courses.edit-course
+  .content
+    .left
+
+    .center
+      %h1
+        Courses
+
+      .box
+        %h2
+          Edit Course
+
+        .description
+          = "Edit the course '#{@course.title}'."
+
+        = render 'partials/course_form'
+
+    .right
+    .clear

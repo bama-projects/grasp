@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :check_user_ownership!, except: [:index, :new, :create, :show]
+  before_action :check_user_ownership!, except: [:index, :new, :create, :edit, :update, :show]
   before_action :check_user_membership!, only: :show
 
   def index
@@ -16,9 +16,21 @@ class CoursesController < ApplicationController
     @course.add_members_by_email! course_params[:user_emails]
 
     if @course.save
-      redirect_to @course, notice: 'course successfully created.'
+      redirect_to @course, notice: 'Course successfully created.'
     else
       render :new
+    end
+  end
+
+  def edit
+    @course = course
+  end
+
+  def update
+    if course.add_members_by_email!(course_params[:user_emails]) && course.update_attributes(course_params)
+      redirect_to course, notice: 'Course successfully updated.'
+    else
+      render :edit
     end
   end
 
@@ -26,13 +38,9 @@ class CoursesController < ApplicationController
     @course = course
   end
 
-  def edit
-    @course = course
-  end
-
   def destroy
     if course.destroy
-      redirect_to root_path, notice: 'course successfully deleted.'
+      redirect_to root_path, notice: 'Course successfully deleted.'
     else
       redirect_to root_path, notice: 'Could not delete course.'
     end
