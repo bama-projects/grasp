@@ -6,12 +6,8 @@
           Information
 
       %li
-        %a{ href: '#content' }
-          Content
-
-      %li
-        %a{ href: '#attachments' }
-          Attachments
+        %a{ href: '#rewards' }
+          Rewards
 
       %li
         %a{ href: '#members' }
@@ -53,11 +49,8 @@
 
       .divider
 
-    #content.page
-      content
-
-    #attachments.page
-      attachments
+    #rewards.page
+      rewards
 
     #members.page
       members
@@ -72,5 +65,5 @@
 
 :javascript
   $(document).on('ready page:load', function() {
-    var courseForm = new courseForm('.course-form');
+    var courseForm = new CourseForm('.course-form');
   });
