@@ -1,4 +1,4 @@
-class Board < ActiveRecord::Base
+class Course < ActiveRecord::Base
   belongs_to :owner, class_name: 'User', foreign_key: :owner_id
   has_and_belongs_to_many :members, class_name: 'User'
 
@@ -30,7 +30,7 @@ class Board < ActiveRecord::Base
   def generate_uid
     self.uid = loop do
       random_uid = SecureRandom.urlsafe_base64(7)
-      break random_uid unless Board.exists? uid: random_uid
+      break random_uid unless course.exists? uid: random_uid
     end
   end
 end

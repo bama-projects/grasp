@@ -1,10 +1,10 @@
-class @BoardForm
+class @CourseForm
   constructor: (el) ->
-    @boardForm = $ el
-    @menu      = @boardForm.find '.menu'
+    @courseForm = $ el
+    @menu      = @courseForm.find '.menu'
     @menuItems = @menu.find 'li'
     @menuBtn   = @menuItems.find 'a'
-    @pages     = @boardForm.find '.page'
+    @pages     = @courseForm.find '.page'
 
     @bindEvents()
 

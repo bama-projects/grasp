@@ -3,9 +3,9 @@
     = "Welcome to grasp, #{current_user.username}!"
 
   %p
-    You haven't created any boards yet.
+    You haven't created any courses yet.
 
   .fa-input.button.small
-    = button_to new_board_path, class: 'green', method: :get do
+    = button_to new_course_path, class: 'green', method: :get do
       %i.fa.fa-plus-circle
-      Create your first board
+      Create your first course

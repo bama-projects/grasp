@@ -22,8 +22,8 @@ class User < ActiveRecord::Base
   validates_attachment :avatar, size: { in: 0..5.megabytes, message: 'size must be less than 5 megabytes' },
                                 content_type: { content_type: ['image/jpeg', 'image/jpg'], message: 'must be in JPEG format' }
 
-  has_many :owned_boards, class_name: 'Board', foreign_key: :owner_id
-  has_and_belongs_to_many :assigned_boards, class_name: 'Board'
+  has_many :owned_courses, class_name: 'Course', foreign_key: :owner_id
+  has_and_belongs_to_many :assigned_courses, class_name: 'Course'
 
   attr_accessor :login
 

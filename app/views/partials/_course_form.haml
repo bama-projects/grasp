@@ -1,4 +1,4 @@
-#board-form.board-form
+#course-form.course-form
   .menu
     %ul
       %li{ class: 'active' }
@@ -19,21 +19,21 @@
 
       .clear
 
-  = form_for @board do |f|
+  = form_for @course do |f|
     #information.page.active
       .field
-        .fa-input.board-title
+        .fa-input.course-title
           %i.fa.fa-calendar-o
           = f.text_field :title, autofocus: true, placeholder: 'Title'
 
-        = handle_form_error(:title, @board)
+        = handle_form_error(:title, @course)
 
       .field
-        .fa-input.board-description
+        .fa-input.course-description
           %i.fa.fa-pencil
           = f.text_field :description, placeholder: 'Description'
 
-        = handle_form_error(:description, @board)
+        = handle_form_error(:description, @course)
 
       .divider
 
@@ -63,7 +63,7 @@
               %i.fa.fa-calendar
               = f.text_field :submission_until, placeholder: 'Select date'
 
-            = handle_form_error(:submission_until, @board)
+            = handle_form_error(:submission_until, @course)
 
           .clear
 
@@ -82,11 +82,11 @@
       .fa-input.button.submit
         = f.button type: 'submit', class: 'green' do
           %i.fa.fa-check-circle
-          Create board
+          Create course
 
       .clear
 
 :javascript
   $(document).on('ready page:load', function() {
-    var boardForm = new BoardForm('.board-form');
+    var courseForm = new courseForm('.course-form');
   });

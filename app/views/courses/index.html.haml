@@ -1,9 +1,9 @@
-#boards.boards
+#courses.courses
   .content
     .left
 
     .center
-      - if @owned_boards.present? || @assigned_boards.present?
+      - if @owned_courses.present? || @assigned_courses.present?
         = render 'partials/dashboard'
 
       - else

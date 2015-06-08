@@ -3,61 +3,61 @@
     Dashboard
 
   .box
-    - if @owned_boards.present?
+    - if @owned_courses.present?
       %h2
-        Boards you own
+        Courses you created
 
       .description
-        These boards have been created by you.
+        These courses have been created by you.
 
       %ul
-        - @owned_boards.each do |board|
+        - @owned_courses.each do |course|
           %li
-            %a{ href: board_path(board) }
+            %a{ href: course_path(course) }
               .id
-                = board.formatted_id
+                = course.formatted_id
 
               .info
                 .title
-                  = board.title
+                  = course.title
 
                 .clear
                 .description
-                  = board.description
+                  = course.description
 
               .actions
-                %a{ href: edit_board_path(board) }
+                %a{ href: edit_course_path(course) }
                   %i.fa.fa-pencil
 
-                %a{ href: board_path(board), class: 'red', data: { method: 'delete', confirm: 'Are you sure?' } }
+                %a{ href: course_path(course), class: 'red', data: { method: 'delete', confirm: 'Are you sure?' } }
                   %i.fa.fa-trash
 
               .clear
 
-      - if @owned_boards.present? && @assigned_boards.present?
+      - if @owned_courses.present? && @assigned_courses.present?
         .divider
 
-    - if @assigned_boards.present?
+    - if @assigned_courses.present?
       %h2
-        Boards you are assigned to
+        Courses you are assigned to
 
       .description
-        You are contributing to these boards.
+        You are contributing to these courses.
 
       %ul
-        - @assigned_boards.each do |board|
+        - @assigned_courses.each do |course|
           %li
-            %a{ href: board_path(board) }
+            %a{ href: course_path(course) }
               .id
-                = board.formatted_id
+                = course.formatted_id
 
               .info
                 .title
-                  = board.title
+                  = course.title
 
                 .clear
                 .description
-                  = board.description
+                  = course.description
 
               .creator
                 .description
@@ -66,9 +66,9 @@
                 .clear
 
                 .username
-                  = board.owner.username
+                  = course.owner.username
 
                 .avatar
-                  = image_tag(board.owner.avatar_image(:tiny))
+                  = image_tag(course.owner.avatar_image(:tiny))
 
               .clear
