@@ -37,6 +37,10 @@ class Course < ActiveRecord::Base
     end
   end
 
+  def remove_member(user)
+    members.delete user
+  end
+
   private
 
   # Generates a unique id and stores it in the database

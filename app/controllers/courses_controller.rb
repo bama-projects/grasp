@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :check_user_ownership!, except: [:index, :new, :create, :edit, :update, :show]
+  before_action :check_user_ownership!, except: [:index, :new, :create, :show]
   before_action :check_user_membership!, only: :show
 
   def index
@@ -28,7 +28,7 @@ class CoursesController < ApplicationController
 
   def update
     if course.add_members_by_email!(course_params[:user_emails]) && course.update_attributes(course_params)
-      redirect_to course, notice: 'Course successfully updated.'
+      redirect_to edit_course_path(course), notice: 'Course successfully updated.'
     else
       render :edit
     end
@@ -46,10 +46,22 @@ class CoursesController < ApplicationController
     end
   end
 
+  def remove_member
+    if course.remove_member user
+      redirect_to edit_course_path(course), notice: 'Member successfully removed.'
+    else
+      redirect_to edit_course_path(course), notice: 'Could not remove member.'
+    end
+  end
+
   private
 
   def course
     Course.find_by_uid params[:id]
+  end
+
+  def user
+    User.find params[:user_id]
   end
 
   def course_params
@@ -57,13 +69,13 @@ class CoursesController < ApplicationController
   end
 
   def check_user_ownership!
-    raise_routing_error if course.nil?
-    forbidden unless course.has_owner? current_user
+    raise_routing_error if     course.nil?
+    forbidden           unless course.has_owner? current_user
   end
 
   def check_user_membership!
-    return if course.is_public?
-    raise_routing_error if course.nil?
-    forbidden unless course.has_member? current_user
+    raise_routing_error if     course.nil?
+    return              if     course.is_public?
+    forbidden           unless course.has_member? current_user
   end
 end

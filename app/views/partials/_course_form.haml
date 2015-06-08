@@ -46,6 +46,23 @@
       .divider
 
     #members.page
+
+      - if @course.members.present?
+        .user-list
+          - @course.members.each do |member|
+            .user
+              .name
+                = member.username
+
+              .delete
+                = link_to content_tag(:i, nil, class: 'fa fa-trash-o'), remove_member_course_path(@course, member), class: 'red', method: :patch, data: { confirm: 'Are you sure?' }
+
+              .clear
+              
+          .clear
+
+        .divider
+
       .field
         .user-selector
           .add

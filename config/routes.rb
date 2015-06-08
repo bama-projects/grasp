@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   # Taken from http://stackoverflow.com/a/3845245 | doritostains | 11th May 2015, 10:12 am
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
 
-  resources :courses
+  resources :courses do
+    patch 'remove_member/:user_id' => 'courses#remove_member', as: :remove_member, on: :member
+  end
 
   match '*path', to: 'application#raise_routing_error', via: :all
 

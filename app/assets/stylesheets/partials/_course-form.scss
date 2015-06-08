@@ -58,6 +58,26 @@
       }
     }
 
+    .user-list {
+      .user {
+        width: 100px;
+
+        padding: 5px;
+        margin: 5px;
+
+        background-color: $greyLighter;
+        float: left;
+
+        .name {
+          float: left;
+        }
+
+        .delete {
+          float: right;
+        }
+      }
+    }
+
     .user-selector {
       .add {
         textarea {
