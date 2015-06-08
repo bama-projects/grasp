@@ -26,9 +26,12 @@
 
                 .info
                   .title
-                    = question.content
+                    = truncate(question.content, length: 35)
 
                   .clear
+
+                  .date
+                    = "Asked on #{question.created_at.to_formatted_s(:long)}"
 
                 .creator
                   .description
