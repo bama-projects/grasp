@@ -38,7 +38,7 @@
             = f.radio_button :public, true
             = f.label :public, 'Public', value: 'true'
 
-            = f.radio_button :public, false, checked: true
+            = f.radio_button :public, false
             = f.label :public, 'Private', value: 'false'
 
           .clear
@@ -58,7 +58,7 @@
                 = link_to content_tag(:i, nil, class: 'fa fa-trash-o'), remove_member_course_path(@course, member), class: 'red', method: :patch, data: { confirm: 'Are you sure?' }
 
               .clear
-              
+
           .clear
 
         .divider
