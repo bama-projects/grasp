@@ -53,22 +53,6 @@
 
       .divider
 
-      .field.submission
-        .table
-          .title
-            Submission until
-
-          .options
-            .fa-input.datetime
-              %i.fa.fa-calendar
-              = f.text_field :submission_until, placeholder: 'Select date'
-
-            = handle_form_error(:submission_until, @course)
-
-          .clear
-
-      .divider
-
     #content.page
       content
 
