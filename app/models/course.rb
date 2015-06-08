@@ -17,6 +17,10 @@ class Course < ActiveRecord::Base
     "##{id}"
   end
 
+  def is_public?
+    public
+  end
+
   def has_owner?(user)
     owner === user
   end

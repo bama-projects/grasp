@@ -54,6 +54,7 @@ class CoursesController < ApplicationController
   end
 
   def check_user_membership!
+    return if course.is_public?
     raise_routing_error if course.nil?
     forbidden unless course.has_member? current_user
   end
