@@ -4,6 +4,8 @@ class Question < ActiveRecord::Base
   belongs_to :author, class_name: 'User', foreign_key: :user_id
   belongs_to :course
 
+  has_many :file_attachments
+
   validates :author,   presence: true
   validates :course,   presence: true
   validates :content,  presence: true
