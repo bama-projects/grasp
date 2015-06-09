@@ -10,9 +10,7 @@ class QuestionsController < ApplicationController
     @question        = current_user.questions.new(question_params)
     @question.course = course
 
-    if @question.save
-      file_params.each { |file| @question.file_attachments.create(file: file) }
-
+    if @question.save && attach_files_to(@question)
       redirect_to [@question.course, @question], notice: 'Question successfully created.'
     else
       render :new
@@ -23,7 +21,19 @@ class QuestionsController < ApplicationController
     @question = question
   end
 
+  def update
+    if question.update_attributes(question_params) && attach_files_to(question)
+      redirect_to edit_course_question_path(question.course, question), notice: 'Question successfully updated.'
+    else
+      render :edit
+    end
+  end
+
   private
+
+  def attach_files_to(object)
+    file_params.each { |file| object.file_attachments.create(file: file) }
+  end
 
   def question
     Question.find_by_uid(params[:id]) || raise_routing_error

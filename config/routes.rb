@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :questions
   end
 
+  resources :file_attachments, only: :destroy
+
   match '*path', to: 'application#raise_routing_error', via: :all
 
   root 'courses#index'

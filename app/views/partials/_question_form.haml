@@ -41,10 +41,33 @@
 
           .options
             = file_field_tag 'files[]', type: :file, multiple: true
+            = handle_form_error(:file_attachments, @question)
 
           .clear
 
       .divider
+
+      - if @question.file_attachments.present?
+        .field.file-attachments
+          .table
+            .title
+              Attached files
+
+            .options
+              - @question.file_attachments.each do |file|
+                .attachment
+                  .preview
+                    = image_tag(file.preview_image)
+
+                  .name
+                    = file.file_file_name
+
+                  .delete
+                    = link_to content_tag(:i, nil, class: 'fa fa-trash-o'), file, class: 'red', method: :delete, data: { confirm: 'Are you sure?' }
+
+            .clear
+
+        .divider
 
     .actions
       .fa-input.button.submit
