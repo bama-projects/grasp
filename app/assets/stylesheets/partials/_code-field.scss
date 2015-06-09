@@ -1,27 +1,32 @@
 @import 'shared/variables';
 
 .code-field {
+  text-align: left;
+
   .options {
-    margin: 10px 0;
     float: right;
 
-    li {
-      margin: 0 10px;
-      float: left;
+    ul {
+      margin: 0;
 
-      background-color: $white;
-      border-radius: 3px;
+      li {
+        margin: 0 10px;
+        float: left;
 
-      a {
-        padding: 10px;
-        color: $blueDark;
-      }
-
-      &:hover, &.active {
-        background-color: $blueDark;
+        background-color: $white;
+        border-radius: 3px;
 
         a {
-          color: $white;
+          padding: 10px;
+          color: $blueDark;
+        }
+
+        &:hover, &.active {
+          background-color: $blueDark;
+
+          a {
+            color: $white;
+          }
         }
       }
     }
@@ -29,6 +34,12 @@
 
   .page {
     display: none;
+
+    &.preview {
+      h2 {
+        margin: 28px 0 16px 0;
+      }
+    }
 
     &.active {
       display: block;

@@ -6,6 +6,9 @@ class @CodeField
     @menuBtn   = @menuItems.find 'a'
     @pages     = @codeField.find '.page'
 
+    @sourcePage  = @codeField.find 'textarea.code'
+    @previewPage = @codeField.find '.preview'
+
     @bindEvents()
 
   bindEvents: ->
@@ -26,15 +29,7 @@ class @CodeField
       @updateMarkdown() if self.attr('href') == '#preview'
 
   updateMarkdown: ->
-    @getMarkdown $('textarea.code').val()
+    @previewPage.html @getMarkdown(@sourcePage.val())
 
   getMarkdown: (source) ->
-    $.ajax
-      url: @getMarkdownUrl(source)
-      type: 'GET'
-
-      success: (data) ->
-        $('.preview').html data
-
-  getMarkdownUrl: (source) ->
-    "markdown?source=#{encodeURIComponent(source)}"
+    markdown.toHTML source

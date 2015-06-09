@@ -15,6 +15,10 @@ class Question < ActiveRecord::Base
     uid
   end
 
+  def markdown
+    markdown_service.render content
+  end
+
   private
 
   # Generates a unique id and stores it in the database
@@ -24,5 +28,9 @@ class Question < ActiveRecord::Base
       random_uid = SecureRandom.urlsafe_base64(7)
       break random_uid unless Course.exists? uid: random_uid
     end
+  end
+
+  def markdown_service
+    @markdown_service ||= Redcarpet::Markdown.new Redcarpet::Render::HTML
   end
 end
