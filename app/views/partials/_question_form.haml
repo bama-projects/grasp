@@ -6,6 +6,18 @@
 
       .divider
 
+      .field.category
+        .table
+          .title
+            Category
+
+          .options
+            = f.select(:category, Question::CATEGORIES.map { |category| [category.humanize, category] })
+
+          .clear
+
+      .divider
+
       .field.privacy
         .table
           .title
