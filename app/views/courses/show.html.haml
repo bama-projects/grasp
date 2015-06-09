@@ -22,7 +22,7 @@
           These questions have been created in this course.
 
         %ul
-          - @course.questions.each do |question|
+          - @questions.each do |question|
             %li
               %a{ href: course_question_path(@course, question) }
                 .status

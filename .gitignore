@@ -14,3 +14,6 @@
 
 # Ignore avatar images
 /public/images
+
+# Ignore file attachments
+/public/files

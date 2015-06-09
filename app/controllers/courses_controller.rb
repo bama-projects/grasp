@@ -35,7 +35,8 @@ class CoursesController < ApplicationController
   end
 
   def show
-    @course = course
+    @course    =  course
+    @questions = @course.questions.order('updated_at desc')
   end
 
   def destroy

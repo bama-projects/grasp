@@ -1,5 +1,5 @@
 #question-form.question-form
-  = form_for [@question.course, @question] do |f|
+  = form_for [@question.course, @question], html: { multipart: true } do |f|
     .page
       .field
         = render 'partials/code_field', form_content: { form: f, content: :content, object: @question }
@@ -29,6 +29,18 @@
 
             = f.radio_button :anonymous, false
             = f.label :anonymous, 'Public', value: 'false'
+
+          .clear
+
+      .divider
+
+      .field.file-upload
+        .table
+          .title
+            File attachments
+
+          .options
+            = file_field_tag 'files[]', type: :file, multiple: true
 
           .clear
 

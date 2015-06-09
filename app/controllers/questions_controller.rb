@@ -6,10 +6,13 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = current_user.questions.new question_params
+    @question        = current_user.questions.new(question_params)
+    @question.course = course
 
     if @question.save
-      redirect_to @question, notice: 'Question successfully created.'
+      file_params.each { |file| @question.file_attachments.create(file: file) }
+
+      redirect_to [@question.course, @question], notice: 'Question successfully created.'
     else
       render :new
     end
@@ -26,7 +29,11 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:content)
+    params.require(:question).permit(:content, :category, :anonymous)
+  end
+
+  def file_params
+    params[:files]
   end
 
   def check_user_course_membership!
