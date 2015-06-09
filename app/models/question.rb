@@ -23,6 +23,10 @@ class Question < ActiveRecord::Base
     markdown_service.render content
   end
 
+  def has_author?(user)
+    author === user
+  end
+
   private
 
   # Generates a unique id and stores it in the database

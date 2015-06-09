@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :check_user_course_membership!
+  before_action :check_user_author!, only: [:edit, :update]
 
   def new
     @question = course.questions.new
@@ -18,10 +19,14 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def edit
+    @question = question
+  end
+
   private
 
   def question
-    Question.find(params[:id]) || raise_routing_error
+    Question.find_by_uid(params[:id]) || raise_routing_error
   end
 
   def course
@@ -34,6 +39,10 @@ class QuestionsController < ApplicationController
 
   def file_params
     params[:files]
+  end
+
+  def check_user_author!
+    forbidden unless question.has_author? current_user
   end
 
   def check_user_course_membership!
