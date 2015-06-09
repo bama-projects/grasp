@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150609072402) do
+ActiveRecord::Schema.define(version: 20150609072820) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,9 +35,13 @@ ActiveRecord::Schema.define(version: 20150609072402) do
   add_index "courses_users", ["user_id"], name: "index_courses_users_on_user_id", using: :btree
 
   create_table "file_attachments", force: :cascade do |t|
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "question_id"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
   end
 
   create_table "questions", force: :cascade do |t|
