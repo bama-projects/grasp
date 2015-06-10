@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
                                 content_type: { content_type: ['image/jpeg', 'image/jpg'], message: 'must be in JPEG format' }
 
   has_many :questions, dependent: :destroy
+  has_many :comments,  dependent: :destroy
   has_many :owned_courses, class_name: 'Course', foreign_key: :owner_id, dependent: :destroy
   has_and_belongs_to_many :assigned_courses, class_name: 'Course'
 
