@@ -5,7 +5,7 @@
   .description
     Enter a helpful answer or solution to help
 
-  = form_for @new_comment, html: { multipart: true } do |f|
+  = form_for [@question.course, @question, @new_comment] do |f|
     .page
       .field
         = render 'partials/code_field', form_content: { form: f, content: :content, object: @new_comment }

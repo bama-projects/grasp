@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question        = current_user.questions.new(question_params)
+    @question        = current_user.questions.new question_params
     @question.course = course
 
     if @question.save && attach_files_to(@question)

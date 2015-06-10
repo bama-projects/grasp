@@ -8,10 +8,11 @@ Rails.application.routes.draw do
 
     resources :questions, except: :index do
       patch 'solve' => 'questions#mark_as_solved!', as: :mark_as_solved, on: :member
+
+      resources :comments, except: [:index, :new, :edit, :show]
     end
   end
 
-  resources :comments
   resources :file_attachments, only: :destroy
 
   match '*path', to: 'application#raise_routing_error', via: :all
