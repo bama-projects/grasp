@@ -1,0 +1,21 @@
+#comment.comment
+  %h2
+    Write an answer
+
+  .description
+    Enter a helpful answer or solution to help
+
+  = form_for @new_comment, html: { multipart: true } do |f|
+    .page
+      .field
+        = render 'partials/code_field', form_content: { form: f, content: :content, object: @new_comment }
+
+      .divider
+
+      .actions
+        .fa-input.button.submit
+          = f.button type: 'submit', class: 'green' do
+            %i.fa.fa-check-circle
+            Answer
+
+      .clear

@@ -18,7 +18,8 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = question
+    @question    = question
+    @new_comment = @question.comments.new
   end
 
   def edit

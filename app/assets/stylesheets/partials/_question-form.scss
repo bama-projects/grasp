@@ -1,14 +1,7 @@
 @import 'shared/variables';
 
 .question-form {
-  textarea {
-    height: 250px;
-    width: 480px;
-  }
-
   .page {
-    margin: 20px 10px;
-
     .table {
       font-size: $fontSizeMediumGreater;
 

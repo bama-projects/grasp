@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :comments
   resources :file_attachments, only: :destroy
 
   match '*path', to: 'application#raise_routing_error', via: :all

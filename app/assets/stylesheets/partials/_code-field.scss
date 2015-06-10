@@ -33,7 +33,17 @@
   }
 
   .page {
+    margin: 20px 10px;
     display: none;
+
+    textarea {
+      height: 250px;
+      width: 480px;
+    }
+
+    &.source {
+      text-align: center;
+    }
 
     &.preview {
       h2 {
