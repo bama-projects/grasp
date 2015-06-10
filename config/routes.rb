@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :courses do
     patch 'remove_member/:user_id' => 'courses#remove_member', as: :remove_member, on: :member
 
-    resources :questions
+    resources :questions, except: :index
   end
 
   resources :file_attachments, only: :destroy
