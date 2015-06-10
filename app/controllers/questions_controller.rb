@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :check_user_course_membership!
-  before_action :check_user_author!, only: [:edit, :update]
+  before_action :check_user_author!, only: [:edit, :update, :destroy]
 
   def new
     @question = course.questions.new
@@ -26,6 +26,14 @@ class QuestionsController < ApplicationController
       redirect_to edit_course_question_path(question.course, question), notice: 'Question successfully updated.'
     else
       render :edit
+    end
+  end
+
+  def destroy
+    if question.destroy
+      redirect_to course, notice: 'Question successfully deleted.'
+    else
+      redirect_to course, notice: 'Could not delete question.'
     end
   end
 
