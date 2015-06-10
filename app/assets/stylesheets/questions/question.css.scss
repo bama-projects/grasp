@@ -1,0 +1,61 @@
+@import 'shared/variables';
+
+.question {
+  .box {
+    text-align: left;
+
+    .heading {
+      float: left;
+
+      .description {
+        float: left;
+      }
+    }
+
+    .creator {
+      padding: 10px 0;
+      float: right;
+
+      .info {
+        margin: 0 10px;
+        float: left;
+
+        .description {
+          margin: 0;
+        }
+
+        .username {
+          text-align: right;
+        }
+      }
+
+      .avatar {
+        height: 40px;
+        width: 40px;
+
+        float: right;
+        border-radius: 3px;
+      }
+    }
+
+    .actions {
+      a {
+        margin: 0 0 0 15px;
+
+        &.solve {
+          color: $greenLight;
+
+          &:hover, &.active {
+            color: $green;
+          }
+        }
+      }
+    }
+
+    .markdown-body {
+      h2 {
+        margin: 28px 0 16px 0;
+      }
+    }
+  }
+}

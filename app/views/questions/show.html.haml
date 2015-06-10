@@ -1,0 +1,50 @@
+#question.questions.question
+  .content
+    .left
+
+    .center
+      %h1
+        Questions
+
+      .box
+        .heading
+          %h2
+            = truncate(@question.content, length: 35)
+
+          .description
+            = "Asked on #{@question.created_at.to_formatted_s(:long)}"
+
+          - if @question.author === current_user
+            .actions
+              %a{ href: mark_as_solved_course_question_path(@question.course, @question), title: 'Mark as solved / unsolved', class: "solve #{active?(@question.solved)}", data: { method: 'patch' } }
+                %i.fa.fa-check
+
+              %a{ href: edit_course_question_path(@question.course, @question), title: 'Edit question' }
+                %i.fa.fa-pencil
+
+              %a{ href: course_question_path(@question.course, @question), title: 'Delete question', class: 'red', data: { method: 'delete', confirm: 'Are you sure?' } }
+                %i.fa.fa-trash
+
+            .clear
+
+        - if @question.anonymous.blank?
+          .creator
+            .info
+              .description
+                Asked by
+
+              .username
+                = @question.author.username
+
+            .avatar
+              = image_tag(@question.author.avatar_image(:thumbnail))
+
+        .clear
+
+        .markdown-body
+          = @question.markdown.html_safe
+
+        = render 'partials/comment'
+
+    .right
+    .clear

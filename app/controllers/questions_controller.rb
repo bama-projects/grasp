@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :check_user_course_membership!
-  before_action :check_user_author!, only: [:edit, :update, :destroy]
+  before_action :check_user_author!, only: [:edit, :update, :destroy, :mark_as_solved!]
 
   def new
     @question = course.questions.new
@@ -17,13 +17,17 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def show
+    @question = question
+  end
+
   def edit
     @question = question
   end
 
   def update
     if question.update_attributes(question_params) && attach_files_to(question)
-      redirect_to edit_course_question_path(question.course, question), notice: 'Question successfully updated.'
+      redirect_to [question.course, question], notice: 'Question successfully updated.'
     else
       render :edit
     end
@@ -37,9 +41,18 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def mark_as_solved!
+    if question.update_attributes solved: !question.solved
+      redirect_to [question.course, question], notice: 'Question successfully updated.'
+    else
+      redirect_to [question.course, question], alert: 'Could not update question.'
+    end
+  end
+
   private
 
   def attach_files_to(object)
+    return true unless file_params
     file_params.each { |file| object.file_attachments.create(file: file) }
   end
 

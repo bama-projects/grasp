@@ -47,7 +47,7 @@
                 - if question.anonymous.blank?
                   .creator
                     .description
-                      Created by
+                      Asked by
 
                     .clear
 
@@ -59,10 +59,10 @@
 
                 - if question.author === current_user
                   .actions
-                    %a{ href: edit_course_question_path(@course, question) }
+                    %a{ href: edit_course_question_path(@course, question), title: 'Edit question' }
                       %i.fa.fa-pencil
 
-                    %a{ href: course_question_path(@course, question), class: 'red', data: { method: 'delete', confirm: 'Are you sure?' } }
+                    %a{ href: course_question_path(@course, question), title: 'Delete question', class: 'red', data: { method: 'delete', confirm: 'Are you sure?' } }
                       %i.fa.fa-trash
 
                 .clear
