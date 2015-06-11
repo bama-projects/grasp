@@ -11,6 +11,8 @@ class Comment < ActiveRecord::Base
   validates :question, presence: true
   validates :content,  presence: true
 
+  scope :no_reply, -> { where(parent: nil) }
+
   def has_author?(user)
     author === user
   end

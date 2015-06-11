@@ -2,7 +2,7 @@
   %h2
     Comments
 
-  - @question.comments(true).order('created_at desc').each do |comment|
+  - @question.comments(true).no_reply.order('created_at desc').each do |comment|
     .comment
       .left-comment-col
         .comment-content
@@ -43,5 +43,36 @@
             = image_tag(comment.author.avatar_image(:thumbnail))
 
         .clear
+
+      - if comment.replies.any?
+        .replies
+          - comment.replies.each do |reply|
+            .reply
+              .avatar.tiny
+                = image_tag(reply.author.avatar_image(:tiny))
+
+              .description
+                = "#{reply.author.username.humanize} replied on #{reply.created_at.to_formatted_s(:long)}"
+
+              - if reply.question.author === current_user
+                .actions
+                  %a{ href: mark_as_helpful_course_question_comment_path(@question.course, @question, reply), title: 'Mark as helpful', class: "verify #{active?(reply.verified)}", data: { method: 'patch' } }
+                    %i.fa.fa-check
+
+              - elsif reply.verified
+                .actions
+                  %a{ title: 'The question author marked this answer as helpful', class: 'verify active' }
+                    %i.fa.fa-check
+
+              .clear
+
+              .comment-content
+                .markdown-body
+                  = reply.markdown.html_safe
+
+              .comment-actions
+                .reply
+                  %a{ href: '#reply', title: 'Reply', class: 'reply' }
+                    %i.fa.fa-reply
 
       .divider

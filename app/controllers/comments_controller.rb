@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :check_user_ownership!, except: :create
+  before_action :check_user_ownership!, except: [:create]
   before_action :check_user_membership!
 
   def create
@@ -41,7 +41,7 @@ class CommentsController < ApplicationController
   end
 
   def check_user_ownership!
-    forbidden unless comment.has_author? current_user
+    forbidden if comment.has_author? current_user
   end
 
   def check_user_membership!

@@ -14,13 +14,13 @@
       .verify {
         margin: 0 20px;
 
-        color: $greenLight;
+        color: $greyLight;
 
         .fa {
           font-size: $fontSizeLargest;
         }
 
-        &.active {
+        &.active, &:hover {
           color: $green;
         }
       }
@@ -51,6 +51,28 @@
       .info {
         .description {
           padding: 0;
+        }
+      }
+    }
+
+    .replies {
+      padding: 10px 20px;
+      border-left: 10px solid $greyLight;
+
+      .avatar {
+        margin: 0 10px 0 0;
+        float: left;
+      }
+
+      .description {
+        float: left;
+      }
+
+      .verify {
+        color: $greyLight;
+
+        &.active, &:hover {
+          color: $green;
         }
       }
     }

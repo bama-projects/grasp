@@ -247,6 +247,11 @@ html {
   .avatar {
     border-radius: 3px;
     overflow: hidden;
+
+    &.tiny {
+      height: 20px;
+      width: 20px;
+    }
   }
 
   .fa {
