@@ -5,6 +5,15 @@
     .left-comment-col {
       width: 500px;
       float: left;
+
+      .comment-content {
+        padding: 10px 0;
+
+        .markdown-body {
+          font-size: 1em;
+          line-height: 1.5;
+        }
+      }
     }
 
     .right-comment-col {
@@ -74,6 +83,15 @@
 
           &.active, &:hover {
             color: $green;
+          }
+        }
+
+        .comment-content {
+          padding: 10px 0;
+
+          .markdown-body {
+            font-size: 1em;
+            line-height: 1.5;
           }
         }
       }
