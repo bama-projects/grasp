@@ -14,6 +14,14 @@ class CommentsController < ApplicationController
     end
   end
 
+  def mark_as_helpful!
+    if comment.update_attributes verified: !comment.verified
+      redirect_to [comment.question.course, comment.question], notice: 'Comment successfully updated.'
+    else
+      redirect_to [comment.question.course, comment.question], alert: 'Could not update comment.'
+    end
+  end
+
   private
 
   def comment

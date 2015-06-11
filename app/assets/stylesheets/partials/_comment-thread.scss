@@ -1,0 +1,42 @@
+@import 'shared/variables';
+
+.comment-thread {
+  .comment {
+    .left-comment-col {
+      width: 500px;
+      float: left;
+    }
+
+    .right-comment-col {
+      width: 50px;
+      float: right;
+
+      .verify {
+        margin: 0 20px;
+
+        color: $greenLight;
+
+        .fa {
+          font-size: $fontSizeLargest;
+        }
+
+        &.active {
+          color: $green;
+        }
+      }
+    }
+
+    .comment-footer {
+      .description {
+        padding: 10px 0;
+        float: left;
+      }
+
+      .info {
+        .description {
+          padding: 0;
+        }
+      }
+    }
+  }
+}

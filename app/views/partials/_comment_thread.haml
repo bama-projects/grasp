@@ -1,0 +1,42 @@
+#comment-thread.comment-thread
+  %h2
+    Comments
+
+  - @question.comments(true).order('created_at desc').each do |comment|
+    .comment
+      .left-comment-col
+        .comment-content
+          .markdown-body
+            = comment.markdown.html_safe
+
+      .right-comment-col
+        - if comment.question.author === current_user
+          .actions
+            %a{ href: mark_as_helpful_course_question_comment_path(@question.course, @question, comment), title: 'Mark as helpful', class: "verify #{active?(comment.verified)}", data: { method: 'patch' } }
+              %i.fa.fa-check
+
+        - elsif comment.verified
+          .actions
+            %a{ title: 'The question author marked this answer as helpful', class: 'verify active' }
+              %i.fa.fa-check
+
+      .clear
+
+      .comment-footer
+        .description
+          = "Answered on #{comment.created_at.to_formatted_s(:long)}"
+
+        .creator
+          .info
+            .description
+              Answered by
+
+            .username
+              = comment.author.username
+
+          .avatar
+            = image_tag(comment.author.avatar_image(:thumbnail))
+
+        .clear
+
+      .divider

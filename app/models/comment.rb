@@ -11,4 +11,14 @@ class Comment < ActiveRecord::Base
   def has_author?(user)
     author === user
   end
+
+  def markdown
+    markdown_service.render content
+  end
+
+  private
+
+  def markdown_service
+    @markdown_service ||= Redcarpet::Markdown.new Redcarpet::Render::HTML
+  end
 end

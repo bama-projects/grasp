@@ -42,12 +42,13 @@
         .clear
 
         .divider
-        
+
         .markdown-body
           = @question.markdown.html_safe
 
         .divider
 
+        = render 'partials/comment_thread'
         = render 'partials/comment'
 
     .right
