@@ -18,7 +18,7 @@ class @CodeField
       self        = $ event.currentTarget
       menuItem    = self.parent()
       menuHref    = self.attr 'href'
-      relatedPage = $ menuHref
+      relatedPage = menuItem.parent().parent().parent().find menuHref
 
       @menuItems.removeClass 'active'
       @pages.    removeClass 'active'

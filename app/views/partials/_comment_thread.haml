@@ -27,6 +27,22 @@
           %a{ href: '#reply', title: 'Reply', class: 'reply' }
             %i.fa.fa-reply
 
+        = form_for [@question.course, @question, comment.replies.new] do |f|
+          .add-reply.page
+            .field
+              = render 'partials/code_field', form_content: { form: f, content: :content, object: comment.replies.new }
+
+            .divider
+
+            .actions
+              .fa-input.button.submit
+                = f.button type: 'submit', class: 'green' do
+                  %i.fa.fa-check-circle
+                  Reply
+
+            .clear
+
+
       .comment-footer
         .description
           = "Answered on #{comment.created_at.to_formatted_s(:long)}"

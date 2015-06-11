@@ -14,3 +14,7 @@
 #= require jquery_ujs
 #= require turbolinks
 #= require_tree .
+
+$(document).on 'ready page:load', ->
+  $('.code-field').each (index, codeField) ->
+    new CodeField codeField
