@@ -59,20 +59,22 @@
       padding: 10px 20px;
       border-left: 10px solid $greyLight;
 
-      .avatar {
-        margin: 0 10px 0 0;
-        float: left;
-      }
+      .comment-reply {
+        .avatar {
+          margin: 0 10px 0 0;
+          float: left;
+        }
 
-      .description {
-        float: left;
-      }
+        .description {
+          float: left;
+        }
 
-      .verify {
-        color: $greyLight;
+        .verify {
+          color: $greyLight;
 
-        &.active, &:hover {
-          color: $green;
+          &.active, &:hover {
+            color: $green;
+          }
         }
       }
     }

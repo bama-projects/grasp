@@ -10,7 +10,7 @@
             = comment.markdown.html_safe
 
       .right-comment-col
-        - if comment.question.author === current_user
+        - if comment.question.author === current_user && comment.author != current_user
           .actions
             %a{ href: mark_as_helpful_course_question_comment_path(@question.course, @question, comment), title: 'Mark as helpful', class: "verify #{active?(comment.verified)}", data: { method: 'patch' } }
               %i.fa.fa-check
@@ -46,15 +46,15 @@
 
       - if comment.replies.any?
         .replies
-          - comment.replies.each do |reply|
-            .reply
+          - comment.replies.order('created_at asc').each do |reply|
+            .comment-reply
               .avatar.tiny
                 = image_tag(reply.author.avatar_image(:tiny))
 
               .description
                 = "#{reply.author.username.humanize} replied on #{reply.created_at.to_formatted_s(:long)}"
 
-              - if reply.question.author === current_user
+              - if reply.question.author === current_user && reply.author != current_user
                 .actions
                   %a{ href: mark_as_helpful_course_question_comment_path(@question.course, @question, reply), title: 'Mark as helpful', class: "verify #{active?(reply.verified)}", data: { method: 'patch' } }
                     %i.fa.fa-check
@@ -70,9 +70,7 @@
                 .markdown-body
                   = reply.markdown.html_safe
 
-              .comment-actions
-                .reply
-                  %a{ href: '#reply', title: 'Reply', class: 'reply' }
-                    %i.fa.fa-reply
+              - unless reply == comment.replies.last
+                .divider
 
       .divider
