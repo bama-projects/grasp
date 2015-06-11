@@ -28,8 +28,10 @@
     margin: 20px 10px;
     display: none;
 
-    &.active {
-      display: block;
+    .list {
+      input {
+        width: 250px;
+      }
     }
 
     .course-title, .course-description {
@@ -85,6 +87,10 @@
           width: 500px;
         }
       }
+    }
+
+    &.active {
+      display: block;
     }
   }
 

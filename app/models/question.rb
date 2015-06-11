@@ -3,6 +3,7 @@ class Question < ActiveRecord::Base
 
   belongs_to :author, class_name: 'User', foreign_key: :user_id
   belongs_to :course
+  belongs_to :lecture
 
   has_many :comments        , dependent: :destroy
   has_many :file_attachments, dependent: :destroy

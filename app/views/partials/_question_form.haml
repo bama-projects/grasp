@@ -18,6 +18,18 @@
 
       .divider
 
+      .field.category
+        .table
+          .title
+            Lecture
+
+          .options
+            = f.select(:lecture_id, @question.course.lectures.map { |lecture| [lecture.title.humanize, lecture.id] })
+
+          .clear
+
+      .divider
+
       .field.privacy
         .table
           .title

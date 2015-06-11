@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :check_user_course_membership!
-  before_action :check_user_author!, only: [:edit, :update, :destroy, :mark_as_solved!]
+  before_action :check_user_author!,   only: [:edit,   :update, :destroy, :mark_as_solved!]
+  before_action :check_lecture_scope!, only: [:create, :update]
 
   def new
     @question = course.questions.new
@@ -65,12 +66,20 @@ class QuestionsController < ApplicationController
     Course.find_by_uid(params[:course_id]) || raise_routing_error
   end
 
+  def lecture
+    Lecture.find(question_params[:lecture_id]) || raise_routing_error
+  end
+
   def question_params
-    params.require(:question).permit(:content, :category, :anonymous)
+    params.require(:question).permit(:content, :category, :lecture_id, :anonymous)
   end
 
   def file_params
     params[:files]
+  end
+
+  def check_lecture_scope!
+    forbidden unless lecture.course === course
   end
 
   def check_user_author!
