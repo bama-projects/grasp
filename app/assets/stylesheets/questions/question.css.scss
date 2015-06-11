@@ -61,5 +61,42 @@
         margin: 28px 0 16px 0;
       }
     }
+
+    .file-attachments {
+      .options {
+        padding: 0 5px;
+
+        a {
+          color: $blue;
+
+          &:hover {
+            color: $blueDark;
+          }
+        }
+
+        .attachment {
+          width: 75px;
+
+          margin: 10px 20px;
+          padding: 5px;
+
+          float: left;
+
+          .preview {
+            height: 40px;
+            width: 40px;
+
+            margin: 0 auto;
+
+            border-radius: 3px;
+            overflow: hidden;
+
+            img {
+              width: 40px;
+            }
+          }
+        }
+      }
+    }
   }
 }

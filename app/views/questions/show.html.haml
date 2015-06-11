@@ -48,6 +48,26 @@
 
         .divider
 
+        - if @question.file_attachments.present?
+          .field.file-attachments
+            .table
+              .title
+                Attached files
+
+              .options
+                - @question.file_attachments.each do |file|
+                  %a{ href: file.file.url, title: 'Download file' }
+                    .attachment
+                      .preview
+                        = image_tag(file.preview_image)
+
+                      .name
+                        = file.file_file_name
+
+              .clear
+
+        .divider
+        
         = render 'partials/comment_thread'
         = render 'partials/comment'
 
