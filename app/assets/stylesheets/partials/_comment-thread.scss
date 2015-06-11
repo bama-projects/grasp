@@ -26,6 +26,22 @@
       }
     }
 
+    .comment-actions {
+      margin: 10px 0 0 0;
+      padding: 9px 10px 5px;
+
+      border-top: 1px solid #f0f0f0;
+      border-bottom: 1px solid #f0f0f0;
+
+      a {
+        color: $greyLight;
+
+        &:hover {
+          color: $greyDark;
+        }
+      }
+    }
+
     .comment-footer {
       .description {
         padding: 10px 0;

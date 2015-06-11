@@ -22,6 +22,11 @@
 
       .clear
 
+      .comment-actions
+        .reply
+          %a{ href: '#reply', title: 'Reply', class: 'reply' }
+            %i.fa.fa-reply
+
       .comment-footer
         .description
           = "Answered on #{comment.created_at.to_formatted_s(:long)}"
