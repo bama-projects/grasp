@@ -37,6 +37,7 @@
 
             .field
               = render 'partials/code_field', form_content: { form: f, content: :content, object: comment.replies.new }
+              = f.hidden_field :comment_id, value: comment.id
 
             .divider
 

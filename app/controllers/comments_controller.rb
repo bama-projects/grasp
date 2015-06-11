@@ -3,9 +3,9 @@ class CommentsController < ApplicationController
   before_action :check_user_membership!
 
   def create
-    comment          = current_user.comments.new comment_params
-    comment.question = question
-    comment.course   = course
+    comment            = current_user.comments.new comment_params
+    comment.question   = question
+    comment.course     = course
 
     if comment.save
       redirect_to [comment.course, comment.question], notice: 'Comment successfully created.'
@@ -37,7 +37,7 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:content)
+    params.require(:comment).permit(:content, :comment_id)
   end
 
   def check_user_ownership!
