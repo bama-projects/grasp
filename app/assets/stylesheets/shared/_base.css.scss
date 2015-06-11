@@ -47,6 +47,14 @@ html {
         color: $red;
       }
     }
+
+    &.blue {
+      color: $blue;
+
+      &:hover {
+        color: $blueDark;
+      }
+    }
   }
 
   ul {

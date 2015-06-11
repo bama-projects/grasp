@@ -66,7 +66,7 @@ class CoursesController < ApplicationController
   end
 
   def course_params
-    params.require(:course).permit(:owner_id, :title, :description, :public, :user_emails)
+    params.require(:course).permit(:owner_id, :title, :description, :public, :user_emails, lectures_attributes: [:title])
   end
 
   def check_user_ownership!

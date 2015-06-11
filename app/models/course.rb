@@ -8,6 +8,8 @@ class Course < ActiveRecord::Base
   validates :owner, presence: true
   validates :title, presence: true
 
+  accepts_nested_attributes_for :lectures
+  
   before_create :generate_uid
 
   attr_accessor :user_emails

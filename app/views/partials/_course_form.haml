@@ -6,6 +6,10 @@
           Information
 
       %li
+        %a{ href: '#lectures' }
+          Lectures
+
+      %li
         %a{ href: '#members' }
           Members
 
@@ -44,6 +48,15 @@
           .clear
 
       .divider
+
+    #lectures.page
+      .list
+        = f.fields_for :lectures, @course.lectures.new do |l|
+          = l.label :title, value: 'Lecture #1'
+          = l.text_field :title, placeholder: 'Title (e. g. Lecture 1: Ruby basics)'
+
+      %a{ href: '#', class: 'add-lecture blue' }
+        Add lecture
 
     #members.page
 

@@ -21,3 +21,5 @@ $(document).on 'ready page:load', ->
 
   $('.comment').each (index, comment) ->
     new Comment comment
+
+  new Lectures $('#lectures')

@@ -15,7 +15,7 @@ class Question < ActiveRecord::Base
   accepts_nested_attributes_for :file_attachments
 
   before_create :generate_uid
-  
+
   def to_param
     uid
   end
