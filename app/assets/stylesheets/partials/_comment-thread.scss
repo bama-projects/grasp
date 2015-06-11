@@ -51,6 +51,25 @@
           }
         }
       }
+
+      .add-reply {
+        padding: 15px 0;
+        display: none;
+
+        textarea {
+          height: 50px;
+        }
+
+        .actions {
+          .submit {
+            float: right;
+          }
+        }
+
+        &.active {
+          display: block;
+        }
+      }
     }
 
     .comment-footer {

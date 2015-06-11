@@ -29,6 +29,12 @@
 
         = form_for [@question.course, @question, comment.replies.new] do |f|
           .add-reply.page
+            %h2
+              Reply
+
+            .description
+              Write a reply
+
             .field
               = render 'partials/code_field', form_content: { form: f, content: :content, object: comment.replies.new }
 
@@ -60,7 +66,7 @@
 
         .clear
 
-      - if comment.replies.any?
+      - if comment.replies(true).present?
         .replies
           - comment.replies.order('created_at asc').each do |reply|
             .comment-reply
@@ -86,7 +92,7 @@
                 .markdown-body
                   = reply.markdown.html_safe
 
-              - unless reply == comment.replies.last
+              - unless reply == comment.replies.first
                 .divider
 
       .divider
