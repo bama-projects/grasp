@@ -37,10 +37,15 @@
 
     .comment-actions {
       margin: 10px 0 0 0;
-      padding: 9px 10px 5px;
+      padding: 8px 0 5px;
 
       border-top: 1px solid #f0f0f0;
       border-bottom: 1px solid #f0f0f0;
+
+      .action {
+        margin: 0 25px;
+        float: left;
+      }
 
       .reply {
         a {

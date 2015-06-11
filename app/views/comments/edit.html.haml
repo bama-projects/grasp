@@ -1,0 +1,32 @@
+#edit-comment.edit-comment.comments
+  .content
+    .left
+
+    .center
+      %h1
+        Comments
+
+      .box
+        %h2
+          Edit your comment
+
+        .description
+          Adjust the content of your comment
+
+        = form_for [@comment.question.course, @comment.question, @comment] do |f|
+          .page
+            .field
+              = render 'partials/code_field', form_content: { form: f, content: :content, object: @comment }
+
+            .divider
+
+            .actions
+              .fa-input.button.submit
+                = f.button type: 'submit', class: 'green' do
+                  %i.fa.fa-check-circle
+                  Finish
+
+            .clear
+
+    .right
+    .clear

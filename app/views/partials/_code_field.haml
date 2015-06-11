@@ -15,7 +15,7 @@
 
   .code
     #source.source.page.active
-      = form_content[:form].text_area form_content[:content], autofocus: true, placeholder: 'Write something (you can use Markdown)', class: 'code'
+      = form_content[:form].text_area form_content[:content], placeholder: 'Write something (you can use Markdown)', class: 'code'
       = handle_form_error(form_content[:content], form_content[:object])
 
     #preview.page.preview.markdown-body

@@ -1,0 +1,14 @@
+@import 'shared/variables';
+
+.comments {
+  h1 {
+    margin: 40px 0 20px;
+
+    color: $white;
+    font-size: $fontSizeLargest;
+  }
+
+  .fa-input {
+    text-align: right;
+  }
+}

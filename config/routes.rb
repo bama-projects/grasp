@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :questions, except: :index do
       patch 'solve' => 'questions#mark_as_solved!', as: :mark_as_solved, on: :member
 
-      resources :comments, except: [:index, :new, :edit, :show] do
+      resources :comments, except: [:index, :new, :show] do
         patch 'helpful' => 'comments#mark_as_helpful!', as: :mark_as_helpful, on: :member
       end
     end

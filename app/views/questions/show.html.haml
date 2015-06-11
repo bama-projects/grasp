@@ -14,7 +14,7 @@
           .description
             = "Asked on #{@question.created_at.to_formatted_s(:long)}"
 
-          - if @question.author === current_user
+          - if @question.has_author?(current_user)
             .actions
               %a{ href: mark_as_solved_course_question_path(@question.course, @question), title: 'Mark as solved / unsolved', class: "solve #{active?(@question.solved)}", data: { method: 'patch' } }
                 %i.fa.fa-check

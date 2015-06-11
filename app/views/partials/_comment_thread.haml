@@ -2,7 +2,7 @@
   %h2
     Comments
 
-  - @question.comments(true).no_reply.order('created_at desc').each do |comment|
+  - @question.comments(true).no_reply.order('created_at asc').each do |comment|
     .comment
       .left-comment-col
         .comment-content
@@ -23,9 +23,20 @@
       .clear
 
       .comment-actions
-        .reply
+        .action.reply
           %a{ href: '#reply', title: 'Reply', class: 'reply' }
             %i.fa.fa-reply
+
+        - if comment.has_author?(current_user)
+          .action.edit
+            %a{ href: edit_course_question_comment_path(@question.course, @question, comment), title: 'Edit comment' }
+              %i.fa.fa-pencil
+
+          .action.delete
+            %a{ href: course_question_comment_path(@question.course, @question, comment), title: 'Delete comment', class: 'red', data: { method: 'delete', confirm: 'Are you sure?' } }
+              %i.fa.fa-trash
+
+        .clear
 
         = form_for [@question.course, @question, comment.replies.new] do |f|
           .add-reply.page
@@ -92,6 +103,18 @@
               .comment-content
                 .markdown-body
                   = reply.markdown.html_safe
+
+              - if reply.has_author?(current_user)
+                .comment-actions
+                  .action.edit
+                    %a{ href: edit_course_question_comment_path(@question.course, @question, reply), title: 'Edit reply' }
+                      %i.fa.fa-pencil
+
+                  .action.delete
+                    %a{ href: course_question_comment_path(@question.course, @question, reply), title: 'Delete reply', class: 'red', data: { method: 'delete', confirm: 'Are you sure?' } }
+                      %i.fa.fa-trash
+
+                  .clear
 
               .divider
 

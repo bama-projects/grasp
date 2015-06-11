@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :check_user_ownership!, except: [:create]
+  before_action :check_user_ownership!, except: [:create, :mark_as_helpful!]
   before_action :check_user_membership!
 
   def create
@@ -14,7 +14,31 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+    @comment = comment
+  end
+
+  def update
+    @comment = comment
+
+    if @comment.update_attributes(comment_params)
+      redirect_to [@comment.question.course, @comment.question], notice: 'Comment successfully updated.'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    if comment.destroy
+      redirect_to [question.course, question], notice: 'Comment successfully deleted.'
+    else
+      redirect_to [question.course, question], notice: 'Could not delete comment.'
+    end
+  end
+
   def mark_as_helpful!
+    forbidden if comment.has_author? current_user
+
     if comment.update_attributes verified: !comment.verified
       redirect_to [comment.question.course, comment.question], notice: 'Comment successfully updated.'
     else
@@ -41,7 +65,7 @@ class CommentsController < ApplicationController
   end
 
   def check_user_ownership!
-    forbidden if comment.has_author? current_user
+    forbidden unless comment.has_author? current_user
   end
 
   def check_user_membership!
