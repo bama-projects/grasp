@@ -1,121 +1,122 @@
-#comment-thread.comment-thread
-  %h2
-    Comments
+- if @question.comments(true).present?
+  #comment-thread.comment-thread
+    %h2
+      Comments
 
-  - @question.comments(true).no_reply.order('created_at asc').each do |comment|
-    .comment
-      .left-comment-col
-        .comment-content
-          .markdown-body
-            = comment.markdown.html_safe
+    - @question.comments(true).no_reply.order('created_at asc').each do |comment|
+      .comment
+        .left-comment-col
+          .comment-content
+            .markdown-body
+              = comment.markdown.html_safe
 
-      .right-comment-col
-        - if comment.question.author === current_user && comment.author != current_user
-          .actions
-            %a{ href: mark_as_helpful_course_question_comment_path(@question.course, @question, comment), title: 'Mark as helpful', class: "verify #{active?(comment.verified)}", data: { method: 'patch' } }
-              %i.fa.fa-check
-
-        - elsif comment.verified
-          .actions
-            %a{ title: 'The question author marked this answer as helpful', class: 'verify active' }
-              %i.fa.fa-check
-
-      .clear
-
-      .comment-actions
-        .action.reply
-          %a{ href: '#reply', title: 'Reply', class: 'reply' }
-            %i.fa.fa-reply
-
-        - if comment.has_author?(current_user)
-          .action.edit
-            %a{ href: edit_course_question_comment_path(@question.course, @question, comment), title: 'Edit comment' }
-              %i.fa.fa-pencil
-
-          .action.delete
-            %a{ href: course_question_comment_path(@question.course, @question, comment), title: 'Delete comment', class: 'red', data: { method: 'delete', confirm: 'Are you sure?' } }
-              %i.fa.fa-trash
-
-        .clear
-
-        = form_for [@question.course, @question, comment.replies.new] do |f|
-          .add-reply.page
-            %h2
-              Reply
-
-            .description
-              Write a reply
-
-            .field
-              = render 'partials/code_field', form_content: { form: f, content: :content, object: comment.replies.new }
-              = f.hidden_field :comment_id, value: comment.id
-
-            .divider
-
+        .right-comment-col
+          - if comment.question.author === current_user && comment.author != current_user
             .actions
-              .fa-input.button.submit
-                = f.button type: 'submit', class: 'green' do
-                  %i.fa.fa-check-circle
-                  Reply
+              %a{ href: mark_as_helpful_course_question_comment_path(@question.course, @question, comment), title: 'Mark as helpful', class: "verify #{active?(comment.verified)}", data: { method: 'patch' } }
+                %i.fa.fa-check
 
-            .clear
-
-
-      .comment-footer
-        .description
-          = "Answered on #{comment.created_at.to_formatted_s(:long)}"
-
-        .creator
-          .info
-            .description
-              Answered by
-
-            .username
-              = comment.author.username
-
-          .avatar
-            = image_tag(comment.author.avatar_image(:thumbnail))
+          - elsif comment.verified
+            .actions
+              %a{ title: 'The question author marked this answer as helpful', class: 'verify active' }
+                %i.fa.fa-check
 
         .clear
 
-      - if comment.replies(true).present?
-        .replies
-          - comment.replies.order('created_at asc').each do |reply|
-            .comment-reply
-              .avatar.tiny
-                = image_tag(reply.author.avatar_image(:tiny))
+        .comment-actions
+          .action.reply
+            %a{ href: '#reply', title: 'Reply', class: 'reply' }
+              %i.fa.fa-reply
+
+          - if comment.has_author?(current_user)
+            .action.edit
+              %a{ href: edit_course_question_comment_path(@question.course, @question, comment), title: 'Edit comment' }
+                %i.fa.fa-pencil
+
+            .action.delete
+              %a{ href: course_question_comment_path(@question.course, @question, comment), title: 'Delete comment', class: 'red', data: { method: 'delete', confirm: 'Are you sure?' } }
+                %i.fa.fa-trash
+
+          .clear
+
+          = form_for [@question.course, @question, comment.replies.new] do |f|
+            .add-reply.page
+              %h2
+                Reply
 
               .description
-                = "#{reply.author.username.humanize} replied on #{reply.created_at.to_formatted_s(:long)}"
+                Write a reply
 
-              - if reply.question.author === current_user && reply.author != current_user
-                .actions
-                  %a{ href: mark_as_helpful_course_question_comment_path(@question.course, @question, reply), title: 'Mark as helpful', class: "verify #{active?(reply.verified)}", data: { method: 'patch' } }
-                    %i.fa.fa-check
-
-              - elsif reply.verified
-                .actions
-                  %a{ title: 'The question author marked this answer as helpful', class: 'verify active' }
-                    %i.fa.fa-check
-
-              .clear
-
-              .comment-content
-                .markdown-body
-                  = reply.markdown.html_safe
-
-              - if reply.has_author?(current_user)
-                .comment-actions
-                  .action.edit
-                    %a{ href: edit_course_question_comment_path(@question.course, @question, reply), title: 'Edit reply' }
-                      %i.fa.fa-pencil
-
-                  .action.delete
-                    %a{ href: course_question_comment_path(@question.course, @question, reply), title: 'Delete reply', class: 'red', data: { method: 'delete', confirm: 'Are you sure?' } }
-                      %i.fa.fa-trash
-
-                  .clear
+              .field
+                = render 'partials/code_field', form_content: { form: f, content: :content, object: comment.replies.new }
+                = f.hidden_field :comment_id, value: comment.id
 
               .divider
 
-      .divider
+              .actions
+                .fa-input.button.submit
+                  = f.button type: 'submit', class: 'green' do
+                    %i.fa.fa-check-circle
+                    Reply
+
+              .clear
+
+
+        .comment-footer
+          .description
+            = "Answered on #{comment.created_at.to_formatted_s(:long)}"
+
+          .creator
+            .info
+              .description
+                Answered by
+
+              .username
+                = comment.author.username
+
+            .avatar
+              = image_tag(comment.author.avatar_image(:thumbnail))
+
+          .clear
+
+        - if comment.replies(true).present?
+          .replies
+            - comment.replies.order('created_at asc').each do |reply|
+              .comment-reply
+                .avatar.tiny
+                  = image_tag(reply.author.avatar_image(:tiny))
+
+                .description
+                  = "#{reply.author.username.humanize} replied on #{reply.created_at.to_formatted_s(:long)}"
+
+                - if reply.question.author === current_user && reply.author != current_user
+                  .actions
+                    %a{ href: mark_as_helpful_course_question_comment_path(@question.course, @question, reply), title: 'Mark as helpful', class: "verify #{active?(reply.verified)}", data: { method: 'patch' } }
+                      %i.fa.fa-check
+
+                - elsif reply.verified
+                  .actions
+                    %a{ title: 'The question author marked this answer as helpful', class: 'verify active' }
+                      %i.fa.fa-check
+
+                .clear
+
+                .comment-content
+                  .markdown-body
+                    = reply.markdown.html_safe
+
+                - if reply.has_author?(current_user)
+                  .comment-actions
+                    .action.edit
+                      %a{ href: edit_course_question_comment_path(@question.course, @question, reply), title: 'Edit reply' }
+                        %i.fa.fa-pencil
+
+                    .action.delete
+                      %a{ href: course_question_comment_path(@question.course, @question, reply), title: 'Delete reply', class: 'red', data: { method: 'delete', confirm: 'Are you sure?' } }
+                        %i.fa.fa-trash
+
+                    .clear
+
+                .divider
+
+        .divider
