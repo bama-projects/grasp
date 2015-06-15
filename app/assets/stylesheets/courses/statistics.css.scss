@@ -1,0 +1,31 @@
+@import 'shared/variables';
+
+.courses.statistics {
+  .avatar {
+    margin: 0 10px 0 0;
+    float: left;
+  }
+
+  .username {
+    float: left;
+  }
+
+  .info {
+    float: right;
+    text-align: right;
+  }
+
+  .btn {
+    margin: 30px;
+  }
+
+  .achievements {
+    .title {
+      color: $blue;
+      
+      &:hover {
+        color: $blue;
+      }
+    }
+  }
+}

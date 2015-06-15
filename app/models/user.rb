@@ -25,9 +25,10 @@ class User < ActiveRecord::Base
   has_many :questions, dependent: :destroy
   has_many :comments,  dependent: :destroy
   has_many :owned_courses, class_name: 'Course', foreign_key: :owner_id, dependent: :destroy
+
   has_and_belongs_to_many :assigned_courses, class_name: 'Course'
 
-  attr_accessor :login
+  attr_accessor :login, :points
 
   # Enables to login with username or email in one field
   # Taken from https://github.com/plataformatec/devise/wiki/How-To:-Allow-users-to-sign-in-using-their-username-or-email-address
@@ -43,5 +44,13 @@ class User < ActiveRecord::Base
 
   def avatar_image(style = :normal)
     avatar.exists? ? avatar.url(style) : "avatar-#{style.to_s}.png"
+  end
+
+  def helpful_answers(comments = comments)
+    comments.select { |comment| comment.author == self && comment.verified }
+  end
+
+  def achievements(course)
+    course.achievements.select { |achievement| achievement.points <= helpful_answers(course.comments).length }
   end
 end

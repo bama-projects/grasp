@@ -5,6 +5,7 @@ class Course < ActiveRecord::Base
   has_many :lectures,     dependent: :destroy
   has_many :questions,    dependent: :destroy
   has_many :achievements, dependent: :destroy
+  has_many :comments,     through: :questions
 
   validates :owner, presence: true
   validates :title, presence: true

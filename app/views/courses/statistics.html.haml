@@ -1,0 +1,51 @@
+#dashboard.dashboard.courses.statistics
+  .content
+    .left
+
+    .center
+      %h1
+        = "Statistics for course #{@course.title}"
+
+      .box
+        %h2
+          Statistics
+
+        .description
+          Users and their achievements
+
+        %ul
+          - @course.members.each do |member|
+            %li
+              .creator
+                .avatar.tiny
+                  = image_tag(member.avatar_image(:tiny))
+
+                .username
+                  = member.username
+
+              .info
+                .points
+                  = "Points: #{member.helpful_answers(@course.comments).length}"
+
+              .clear
+
+              #achievements.achievements
+                %ul
+                  - member.achievements(@course).each do |achievement|
+                    %li
+                      .title
+                        %h2
+                          = achievement.title
+
+                      .description
+                        = achievement.description
+
+                      .points
+                        = "Needed points: #{achievement.points}"
+
+                      .divider
+
+                .clear
+
+    .right
+    .clear

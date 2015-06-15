@@ -56,6 +56,10 @@ class CoursesController < ApplicationController
     end
   end
 
+  def statistics
+    @course = course
+  end
+
   private
 
   def course
