@@ -26,6 +26,9 @@
                   = course.description
 
               .actions
+                %a{ href: statistics_course_path(course), title: 'Show statistics' }
+                  %i.fa.fa-trophy
+
                 %a{ href: edit_course_path(course) }
                   %i.fa.fa-pencil
 
