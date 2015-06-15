@@ -55,8 +55,10 @@
 
     #lectures.page
       .list
-        = f.fields_for :lectures, @course.lectures.new do |l|
-          = l.label :title, value: 'Lecture #1'
+        = f.fields_for :lectures, @course.lectures do |l|
+          %br
+          %br
+          = l.label :title, value: "Lecture ##{l.options[:child_index] + 1}"
           = l.text_field :title, placeholder: 'Title (e. g. Lecture 1: Ruby basics)'
 
       %a{ href: '#', class: 'add-lecture blue' }
@@ -64,10 +66,10 @@
 
     #achievements.page
       .achievements.list
-        = f.fields_for :achievements, @course.achievements.new do |a|
+        = f.fields_for :achievements, @course.achievements do |a|
           .entry
             .row
-              = a.label :title, value: 'Achievement #1'
+              = a.label :title, value: "Achievement ##{a.options[:child_index] + 1}"
               = a.text_field :title, placeholder: 'Title (e. g. +5% Course grading)'
 
             .row

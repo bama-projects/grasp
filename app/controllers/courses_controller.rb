@@ -30,6 +30,7 @@ class CoursesController < ApplicationController
     if course.add_members_by_email!(course_params[:user_emails]) && course.update_attributes(course_params)
       redirect_to edit_course_path(course), notice: 'Course successfully updated.'
     else
+      @course = course
       render :edit
     end
   end
@@ -66,7 +67,7 @@ class CoursesController < ApplicationController
   end
 
   def course_params
-    params.require(:course).permit(:owner_id, :title, :description, :public, :user_emails, lectures_attributes: :title, achievements_attributes: [:title, :description, :points])
+    params.require(:course).permit(:owner_id, :title, :description, :public, :user_emails, lectures_attributes: [:id, :title], achievements_attributes: [:id, :title, :description, :points])
   end
 
   def check_user_ownership!
