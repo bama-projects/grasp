@@ -32,6 +32,17 @@
       input {
         width: 250px;
       }
+
+      &.achievements {
+        textarea {
+          width: 345px;
+        }
+
+        .entry {
+          padding: 15px 0;
+          border-bottom: 1px dotted $greyLight;
+        }
+      }
     }
 
     .course-title, .course-description {

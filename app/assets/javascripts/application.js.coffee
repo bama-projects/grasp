@@ -23,3 +23,5 @@ $(document).on 'ready page:load', ->
     new Comment comment
 
   new Lectures $('#lectures')
+
+  new Achievements $('#achievements')

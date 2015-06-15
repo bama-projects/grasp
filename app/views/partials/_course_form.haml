@@ -10,6 +10,10 @@
           Lectures
 
       %li
+        %a{ href: '#achievements' }
+          Achievements
+
+      %li
         %a{ href: '#members' }
           Members
 
@@ -57,6 +61,25 @@
 
       %a{ href: '#', class: 'add-lecture blue' }
         Add lecture
+
+    #achievements.page
+      .achievements.list
+        = f.fields_for :achievements, @course.achievements.new do |a|
+          .entry
+            .row
+              = a.label :title, value: 'Achievement #1'
+              = a.text_field :title, placeholder: 'Title (e. g. +5% Course grading)'
+
+            .row
+              = a.text_area :description, placeholder: 'Description'
+
+            .row
+              = a.label :points
+              = a.text_field :points, placeholder: '1'
+
+
+      %a{ href: '#', class: 'add-achievement blue' }
+        Add achievement
 
     #members.page
 
