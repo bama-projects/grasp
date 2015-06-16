@@ -1,0 +1,16 @@
+#navigation.navigation
+  .link
+    = link_to 'Home', root_path
+
+  .link
+    = link_to 'Courses', courses_path
+
+  - if @course.present?
+    .link
+      = link_to "Course: #{@course.title}", @course
+
+  - elsif @question.course.present?
+    .link
+      = link_to "Course: #{@question.course.title}", course_path(@question.course)
+
+  .clear
