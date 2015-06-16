@@ -1,0 +1,31 @@
+@import 'shared/variables';
+
+.your-questions {
+  .list {
+    margin: 10px 0;
+    text-align: left;
+
+    .title {
+      color: $greyDark;
+      font-size: $fontSizeLarge;
+    }
+
+    .category {
+      margin: 0 10px 0 0;
+      padding: 1px 5px;
+
+      float: left;
+
+      font-size: $fontSizeSmall;
+      color: $white;
+      background-color: $blue;
+
+      border-radius: 3px;
+    }
+
+    .date {
+      margin: 5px 0;
+      color: $grey;
+    }
+  }
+}

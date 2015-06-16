@@ -17,6 +17,8 @@ class Question < ActiveRecord::Base
 
   before_create :generate_uid
 
+  scope :by_author, -> (user) { where(author: user) }
+
   def to_param
     uid
   end

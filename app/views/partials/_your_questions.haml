@@ -1,0 +1,22 @@
+- if @course.questions.by_author(current_user).present?
+  #your-questions.your-questions.sidebar-element
+    .box
+      %h2
+        Your questions
+
+      .list
+        - @course.questions.by_author(current_user).each do |question|
+          %a{ href: course_question_path(@course, question) }
+            .question
+              .title
+                = truncate(question.content, length: 35)
+
+              .category
+                = question.category.to_s.humanize
+
+              .clear
+              
+              .date
+                = "Asked on #{question.created_at.to_formatted_s(:long)}"
+
+          .divider
