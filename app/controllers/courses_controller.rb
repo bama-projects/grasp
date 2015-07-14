@@ -60,6 +60,10 @@ class CoursesController < ApplicationController
     @course = course
   end
 
+  def json
+    render json: course.questions.to_json(include: :comments)
+  end
+
   private
 
   def course
