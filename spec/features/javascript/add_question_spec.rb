@@ -10,8 +10,7 @@ describe "Adding Questions", :type => :feature do
 
   it "adds a question to the first lecture" do
     expect do
-      puts path = new_course_question_path(course.uid)
-      visit path
+      visit new_course_question_path(course.uid)
       expect(page).to have_content 'New question'
       fill_in 'question_content', with: "Here's my question!"
       find('button.green').click
