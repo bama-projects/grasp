@@ -1,14 +1,6 @@
 # grasp #
 
-## Installation ##
+## Travis and Heroku
+[![Build Status](https://travis-ci.org/bama-projects/grasp.svg?branch=master)](https://travis-ci.org/bama-projects/grasp)
 
-###### Setup database ######
-```
-$ rake db:setup
-$ rake db:migrate
-```
-
-###### Start application ######
-```
-$ rails s
-```
+Heroku: https://grasp-stage.herokuapp.com/
