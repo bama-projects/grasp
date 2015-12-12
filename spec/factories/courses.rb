@@ -4,4 +4,8 @@ FactoryGirl.define do
     sequence(:title)  { |n| "Info#{n}" }
     association :owner, factory: :user
   end
+  factory :lecture do
+    title 'Lecture 1'
+    course
+  end
 end
