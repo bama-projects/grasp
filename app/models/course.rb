@@ -53,6 +53,7 @@ class Course < ActiveRecord::Base
 
   # Generates a unique id and stores it in the database
   # Taken from http://stackoverflow.com/a/12109098 Stackoverflow | Krule | 12th May 2015, 02:52 pm
+  # TBD: should be replaced by https://github.com/rails/rails/blob/master/activerecord/lib/active_record/secure_token.rb
   def generate_uid
     self.uid = loop do
       random_uid = SecureRandom.urlsafe_base64(7)

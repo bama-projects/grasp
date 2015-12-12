@@ -17,3 +17,6 @@
 
 # Ignore file attachments
 /public/files
+
+# Ignore byebug history
+.byebug_history
