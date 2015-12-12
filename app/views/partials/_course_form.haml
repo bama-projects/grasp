@@ -6,7 +6,7 @@
           Information
 
       %li
-        %a{ href: '#lectures' }
+        %a{ href: '#lectures', id: 'course-lectures' }
           Lectures
 
       %li
@@ -61,7 +61,7 @@
           = l.label :title, value: "Lecture ##{l.options[:child_index] + 1}"
           = l.text_field :title, placeholder: 'Title (e. g. Lecture 1: Ruby basics)'
 
-      %a{ href: '#', class: 'add-lecture blue' }
+      %a{ href: '#', id: 'add-lecture-link', class: 'add-lecture blue' }
         Add lecture
 
     #achievements.page

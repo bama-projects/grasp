@@ -21,9 +21,11 @@ group :development, :test do
   gem 'spring'
   gem 'rspec-rails', '~> 3.0'
   gem 'capybara'
+  gem 'selenium-webdriver'
   gem 'launchy'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
+  gem 'byebug'
 end
 
 group :production do

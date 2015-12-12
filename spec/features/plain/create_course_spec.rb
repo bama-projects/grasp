@@ -23,4 +23,31 @@ describe "creating a new course", :type => :feature do
     expect(page).to have_content 'Course Info1'
   end
 
+
+  describe "The Dashboard", :type => :feature do
+    let(:user) {  create(:user) }
+    let(:course) {  create(:course) }
+
+    it "suggests to create a course if none's there" do
+      login_as(user, :scope => :user)
+      visit root_path
+      expect(page).to have_content('Create your first course')
+    end
+
+    describe "(when courses have been created)" do
+      before :each do
+        login_as(course.owner, :scope => :user)
+      end
+      it "is shown as root when logged in and courses are present" do
+        visit root_path
+        expect(page).to have_content('Dashboard')
+      end
+
+      it "shows them" do
+          visit root_path
+          expect(page).to have_content(course.title)
+      end
+end
+    end
+
 end
