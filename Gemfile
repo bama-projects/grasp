@@ -15,19 +15,15 @@ gem 'paperclip'
 gem 'rmagick', '2.13.2'
 gem 'redcarpet'
 
-# Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
 group :development, :test do
   gem 'pry'
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'rspec-rails', '~> 3.0'
   gem 'capybara'
-  gem "launchy"
+  gem 'launchy'
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
 end
 
 group :production do
