@@ -20,3 +20,6 @@
 
 # Ignore byebug history
 .byebug_history
+
+# don't commit local database configuration to github
+config/database.yml.local

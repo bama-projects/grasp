@@ -5,15 +5,27 @@ default: &default
   pool: 5
   username: grasprails
   password: grasp-dev
+  database: grasp_<%= Rails.env %>
 
 development:
   <<: *default
-  database: grasp_development
+
 test:
   <<: *default
-  database: grasp_test
 
 production:
   <<: *default
   database: grasp_production
-  
+
+# use local postgres dbs for test and development if configured
+<% local_pg = File.expand_path("config/database.yml.local")
+   if File.exist?(local_pg)%>
+  <%= File.read(local_pg) %>
+<% else %>
+
+development:
+  <<: *defaults
+test:
+  <<: *defaults
+
+<% end %>

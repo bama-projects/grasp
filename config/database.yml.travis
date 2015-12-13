@@ -1,4 +1,24 @@
-test:
+
+# db setup from this blog post
+# http://matthew.mceachen.us/blog/howto-test-your-rails-application-with-travis-ci-on-different-database-engines-1220.html
+
+# to migrate test db, use
+# bundle exec rake db:migrate RAILS_ENV=test
+# because Rails.env will return development otherwise -
+# see http://stackoverflow.com/questions/11156627/rake-dbtestprepare-task-deleting-data-in-development-database
+
+sqlite: &sqlite
+  adapter: sqlite3
+  database: db/test.sqlite3
+  database: db/<%= Rails.env %>.sqlite3
+
+postgresql: &postgresql
   adapter: postgresql
   database: travis_ci_test
   username: postgres
+  encoding: unicode
+
+test:
+  pool: 5
+  timeout: 5000
+  <<: *<%= ENV['DB'] || "sqlite" %>
