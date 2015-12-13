@@ -7,17 +7,16 @@ Rails.application.load_tasks
 
 
 
+
 begin
   require 'rspec/core/rake_task'
 
-  RSpec::Core::RakeTask.new(:spec) do |t|
+  RSpec::Core::RakeTask.new(:specrand) do |t|
     t.rspec_opts = "--order rand"
   end
 rescue LoadError
   puts "no rspec available"
 end
 
-namespace :test do
   desc "test suite that should be run on CI server"
-  task :travis => :spec
-end
+  task :travis => :specrand

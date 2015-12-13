@@ -18,8 +18,8 @@ production:
 <% else %>
 
 development:
-  <<: *defaults
+  <<: *default
 test:
-  <<: *defaults
+  <<: *default
 
 <% end %>
