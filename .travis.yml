@@ -11,3 +11,6 @@ before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
 script:
   - bundle exec rspec --order rand
+matrix:
+  allow_failures:
+    - env: DB=sqlite

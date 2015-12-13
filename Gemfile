@@ -26,6 +26,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'byebug'
+  gem 'sqlite3'
 end
 
 group :production do
