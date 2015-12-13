@@ -12,6 +12,3 @@ before_script:
 script:
   - bundle exec rake db:schema:load
   - rake travis
-matrix:
-  allow_failures:
-    - env: DB=sqlite
