@@ -10,6 +10,7 @@ before_script:
   - cp config/database.yml.travis config/database.yml
   - psql -c 'create database travis_ci_test;' -U postgres
 script:
+  - bundle exec rake db:schema:load
   - bundle exec rspec --order rand
 matrix:
   allow_failures:
